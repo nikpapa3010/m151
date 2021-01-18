@@ -1,6 +1,6 @@
 <?php
   session_start();
-  include '../Core/usersrepository.inc.php';
+  include '../Repository/usersrepository.inc.php';
   
   // Falls Aufruf von Login-Seite
   if($_SERVER['REQUEST_METHOD'] === 'POST') 
