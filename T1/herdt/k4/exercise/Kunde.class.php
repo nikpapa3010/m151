@@ -18,6 +18,8 @@ class Kunde
     $this-> setAdresse($adresse);
     $this -> konto = $konto;
  
+
+    
   }
   public function __destruct() {
 		echo "<br />Objekt mit dem Namen " . $this -> vorname . " " . $this -> nachname ." wird gel&ouml;scht...";
