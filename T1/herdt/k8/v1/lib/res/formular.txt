@@ -1,5 +1,9 @@
+git push -u origin main
  <h1/>Gewünschter Auszahlungsbetrag</h1>
  <form action="<?=$_SERVER['PHP_SELF']?>" method="post"> 
 <label for="">Betrag</label><input name="betrag"/><br />
 <input type="submit"/><br />
 </form>
+
+
+
