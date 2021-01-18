@@ -3,7 +3,7 @@ function connect() {
   $pdo = null;           
   try 
   {
-    $pdo = new PDO( 'mysql:host=localhost;dbname=ski_service;charset=utf8;port=3307',
+    $pdo = new PDO( 'mysql:host=localhost;dbname=ski_service;charset=utf8;port=3306',
                     'SkiKunde'
     );
   } 
