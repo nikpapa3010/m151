@@ -2,6 +2,7 @@
 
 class Konto
 {
+  
   private $kontostand = 0;
   private $kontotyp = "";
   
