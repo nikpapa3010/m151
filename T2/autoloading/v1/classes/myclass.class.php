@@ -3,3 +3,4 @@ class MyClass {
   public $MyName = "Max";
 }
 ?>
+
