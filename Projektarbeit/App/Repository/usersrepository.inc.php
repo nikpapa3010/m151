@@ -21,7 +21,7 @@
     
     if ($result == true)
     {
-        // If the password verification is cokrrect the $exists is true. that lets us continue to the website
+        // If the password verification is correct the $exists is true. that lets us continue to the website
         $exists = password_verify($password, $result['passwort']);
         if (!$exists)
             $errors[] = "Passwort falsch!";
