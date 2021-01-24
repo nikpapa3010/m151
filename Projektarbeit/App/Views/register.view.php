@@ -114,7 +114,7 @@
         <div class="text-right">
           <button type="submit" class="btn btn-primary" name="submit">Registrieren!</button>
         </div>
-      </form>%
+      </form>
     </div>
   </body>
 </html>
