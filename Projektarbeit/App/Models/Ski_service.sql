@@ -48,6 +48,9 @@ create table Benutzer
     Passwort varchar(70) not null,
     Email varchar(60) not null unique,
     Telefonnummer varchar(20) null unique,
+    Körpergrösse int not null, 
+    Lebensalter int not null,
+    Geschlecht varchar(20), 
     RangID int not null,
     primary key (UserID),
     foreign key (RangID) references Rang(RangID)
