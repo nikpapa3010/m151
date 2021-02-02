@@ -11,7 +11,7 @@
             $conn = new PDO("mysql:host=$host;dbname=$dbname",
                             $username, $password);
             // execute the stored procedure
-            $sql = 'CALL GetCustomers()';
+            $sql = 'CALL SelectPersonByID(1000)';
             $q = $conn->query($sql);
             $q->setFetchMode(PDO::FETCH_ASSOC);
         } catch (PDOException $pe) {
@@ -21,12 +21,12 @@
         <table>
             <tr>
                 <th>Customer Name</th>
-                <th>Credit Limit</th>
+                <th>Gehalt</th>
             </tr>
         <?php while ($r = $q->fetch()): ?>
                 <tr>
-                    <td><?php echo $r['customerName'] ?></td>
-                    <td><?php echo '$' . number_format($r['creditlimit'],2) ?>
+                    <td><?php echo $r['vorname'] ?></td>
+                    <td><?php echo '$' . number_format($r['gehalt'],2) ?>
                     </td>
                 </tr>
         <?php endwhile; ?>
