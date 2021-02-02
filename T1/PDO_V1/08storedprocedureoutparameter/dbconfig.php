@@ -1,5 +1,5 @@
 <?php
     $host = 'localhost';
-    $dbname = 'classicmodels';
+    $dbname = 'm151';
     $username = 'root';
     $password = '';

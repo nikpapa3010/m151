@@ -116,3 +116,35 @@ end $$
 call SelectPersonByID(200);
 
 
+
+
+-- get customer --
+DELIMITER $$
+CREATE PROCEDURE GetCustomers()
+BEGIN
+ SELECT vorname, gehalt
+ FROM personen;
+END$$
+
+
+-- get customer level --
+DELIMITER $$
+CREATE PROCEDURE GetCustomerLevel(
+    in  pNr int(11), 
+    out p_customerLevel  varchar(10))
+BEGIN
+    DECLARE creditlim double;
+ 
+    SELECT gehalt INTO creditlim
+    FROM personen
+    WHERE personalnummer = pNr;
+ 
+    IF creditlim > 50000 THEN
+    SET p_customerLevel = 'PLATINUM';
+    ELSEIF (creditlim <= 50000 AND creditlim >= 10000) THEN
+        SET p_customerLevel = 'GOLD';
+    ELSEIF creditlim < 10000 THEN
+        SET p_customerLevel = 'SILVER';
+    END IF;
+ 
+END$$

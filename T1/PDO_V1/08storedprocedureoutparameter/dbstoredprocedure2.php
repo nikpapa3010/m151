@@ -2,7 +2,7 @@
 
 require_once 'dbconfig.php';
 
-$customerNumber = 103;
+$customerNumber = 200;
 try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     // execute the stored procedure
