@@ -14,12 +14,10 @@ try {
     $q->execute(array(':fname' => 'Le%',
                       ':lname' => '%son'));
     $q->setFetchMode(PDO::FETCH_ASSOC);
-
-
+ 
     while ($r = $q->fetch()) {
         echo sprintf('%s <br/>', $r['lastname']);
     }
-    
 } catch (PDOException $pe) {
     die("Could not connect to the database $dbname :" . $pe->getMessage());
 }

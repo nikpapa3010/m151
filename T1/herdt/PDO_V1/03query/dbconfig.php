@@ -2,4 +2,4 @@
 $host = 'localhost';
 $dbname = 'classicmodels';
 $username = 'root';
-$password = '';
+$password = 'Sauber2Sauber';

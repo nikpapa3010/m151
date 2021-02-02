@@ -27,11 +27,10 @@ class DeleteDataDemo{
 	
 	/**
 	 * truncate the tasks table
-	 * truncate removes all rows from a table
 	 * @return a PDOStatement object, or false on failure.
 	 */
 	public function truncateTable() {
-		$sql = '	 TABLE tasks';
+		$sql = 'TRUNCATE TABLE tasks';
 		return $this->conn->exec($sql);
 		
 	}

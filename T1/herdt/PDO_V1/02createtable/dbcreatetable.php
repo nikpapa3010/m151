@@ -10,8 +10,7 @@ class CreateTableDemo{
 	/**
 	 * Open the database connection
 	 */
-	public function __construct()
-	{
+	public function __construct(){
 		// open database connection
 		$connectionString = sprintf("mysql:host=%s;dbname=%s",
 				CreateTableDemo::DB_HOST,

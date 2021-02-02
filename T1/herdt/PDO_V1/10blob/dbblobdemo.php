@@ -111,7 +111,7 @@ class BobDemo{
 $blobObj = new BobDemo();
 
 // test insert gif image
-// $blobObj->insertBlob('images/php-mysql-blob.gif',"image/gif");
+//$blobObj->insertBlob('images/php-mysql-blob.gif',"image/gif");
 
 
 // $a = $blobObj->selectBlob(1);
@@ -121,22 +121,22 @@ $blobObj = new BobDemo();
 
 
 // test insert pdf
-// $blobObj->insertBlob('pdf/php-mysql-blob.pdf',"application/pdf");
+//$blobObj->insertBlob('pdf/php-mysql-blob.pdf',"application/pdf");
 
-$a = $blobObj->selectBlob(2);
+//$a = $blobObj->selectBlob(2);
 // save it to the pdf file
-file_put_contents("pdf/output.pdf", $a['data']);
+//file_put_contents("pdf/output.pdf", $a['data']);
 
 // $a = $blobObj->selectBlob(2);
-header("Content-Type:" . $a['mime']);
-echo $a['data'];
+// header("Content-Type:" . $a['mime']);
+// echo $a['data'];
 
 
 // replace the PDF by gif file
-// $blobObj->updateBlob(2, 'images/php-mysql-blob.gif', "image/gif");
+$blobObj->updateBlob(2, 'images/php-mysql-blob.gif', "image/gif");
 
-// $a = $blobObj->selectBlob(1);
-// header("Content-Type:" . $a['mime']);
+$a = $blobObj->selectBlob(2);
+header("Content-Type:" . $a['mime']);
 echo $a['data'];
 
 

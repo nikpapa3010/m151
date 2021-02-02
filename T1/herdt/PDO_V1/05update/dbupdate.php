@@ -19,12 +19,12 @@ class UpdateDataDemo{
 			$this->conn = new PDO($connectionString,
 					UpdateDataDemo::DB_USER,
 					UpdateDataDemo::DB_PASSWORD);
-	
+
 		} catch (PDOException $pe) {
 			die($pe->getMessage());
 		}
 	}
-	
+
 	/**
 	 * update an existing task in the tasks table
 	 * @param string $subject
