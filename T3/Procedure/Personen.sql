@@ -13,6 +13,32 @@ CREATE TABLE if not exists `personen`
   PRIMARY KEY (`personalnummer`)
 );
   
+CREATE TABLE if not exists `personen_audit` (
+  `audit_id` int NOT NULL auto_increment,
+  `personalnummer` int NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `change_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`audit_id`)
+);
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  -- ------------------------- PROCEDURES ------------------------------------------
   
 -- Insert or Update Customer --
 drop procedure if exists `Insert_UpsertCustomer`;
