@@ -129,9 +129,11 @@ END$$
 
 -- get customer level --
 DELIMITER $$
-CREATE PROCEDURE GetCustomerLevel(
+CREATE PROCEDURE GetCustomerLevel
+(
     in  pNr int(11), 
-    out p_customerLevel  varchar(10))
+    out p_customerLevel  varchar(10)
+)
 BEGIN
     DECLARE creditlim double;
  
@@ -147,4 +149,4 @@ BEGIN
         SET p_customerLevel = 'SILVER';
     END IF;
  
-END$$
+END $$
