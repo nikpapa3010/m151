@@ -11,7 +11,7 @@ try {
                   firstname LIKE :fname';
  
     $q = $conn->prepare($sql);
-    $q->execute(array(':fname' => 'Le%',
+    $q->execute(array(':f^^name' => 'Le%',
                       ':lname' => '%son'));
     $q->setFetchMode(PDO::FETCH_ASSOC);
 
