@@ -118,47 +118,18 @@ create table Mietauftrag
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 --------------------- Views -------------------------
 
--- Alle benutzter
 
 
 -- Alle benutzter mit Mieatauftrag
 
+create view Benutzter_Mietauftrag as
+	select  benutzer.Passwort, benutzer.Telefon, benutzer.Email, benutzer.Vorname, benutzer.Nachname, benutzer.RangFK as 'Rang', MietauftragID, 
+    Reservationsdatum, Startdatum, Dauer
+    from mietauftrag 
+    inner join benutzer on benutzer.BenuzterID = mietauftrag.BenutzerFK;
 
-
-
-
+select * from benutzter_mietauftrag;
 
 -- Alle benutzter mit Serviceauftrag
