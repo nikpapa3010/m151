@@ -7,7 +7,7 @@ create table rang
 (
 	RangID int unique not null,
     Berehtigung int null,
-    Bezeichnugn varchar(20) not null,
+    Bezeichnung varchar(20) not null,
     Primary key (RangID)
 );
 
@@ -23,6 +23,8 @@ create table benutzer
     Primary key (BenuzterID),
     Foreign key (RangFK) references Rang(RangID)
 );
+
+
 -- Service Tables --
 create table Prioritaet 
 (
@@ -81,7 +83,7 @@ create table Mietstatus
     Primary key (StatusID)
 );
 
-create table Mieatobjekttyp
+create table Mietobjekttyp
 (
 	ObjekttypID int unique not null,
     Bezeichnung varchar(20) not null
@@ -96,8 +98,18 @@ create table Mietobjekt
     PreisProTag decimal(5,2),
     ObjekttypFK int unique,
     Primary key(MietobjektID),
-    Foreign key(ObjekttypFK) references Mieatobjekttyp(ObjekttypID)
+    Foreign key(ObjekttypFK) references Mietobjekttyp(ObjekttypID)
 );
+
+
+
+
+-- Procedures for Create User, insert Serviceauftrag, insert Mietauftrag --
+
+
+
+
+
 
 
 create table Mietauftrag
@@ -119,17 +131,50 @@ create table Mietauftrag
 
 
 --------------------- Views -------------------------
-
-
-
 -- Alle benutzter mit Mieatauftrag
 
 create view Benutzter_Mietauftrag as
-	select  benutzer.Passwort, benutzer.Telefon, benutzer.Email, benutzer.Vorname, benutzer.Nachname, benutzer.RangFK as 'Rang', MietauftragID, 
-    Reservationsdatum, Startdatum, Dauer
+	select  benutzer.Nachname, benutzer.Vorname, benutzer.Passwort, benutzer.Telefon, benutzer.Email, mietobjekttyp.Bezeichnung as 'Miete', 
+			mietstatus.Bezeichnung as 'Status', Reservationsdatum, Startdatum, Dauer
     from mietauftrag 
-    inner join benutzer on benutzer.BenuzterID = mietauftrag.BenutzerFK;
+    inner join benutzer on benutzer.BenuzterID = mietauftrag.BenutzerFK
+    inner join mietobjekttyp on mietobjekttyp.ObjekttypID = mietauftrag.MietobjektFK
+    inner join mietstatus on mietstatus.StatusID = mietauftrag.StatusFK;
+select * from Benutzter_Mietauftrag;
 
-select * from benutzter_mietauftrag;
+
 
 -- Alle benutzter mit Serviceauftrag
+create view Benutzter_Serviceauftrag as
+	select  benutzer.Nachname, benutzer.Vorname, benutzer.Passwort, benutzer.Telefon, benutzer.Email, Serviceobjekt.Bezeichnung 'Service', 
+    serviceobjekt.Grundpreis, servicestatus.Bezeichnung as 'status', Startdatum, prioritaet.Bezeichnung as 'Prioritaet', Dauer
+    from serviceauftrag 
+    inner join benutzer on benutzer.BenuzterID = serviceauftrag.BenutzerFK
+    inner join serviceobjekt on serviceobjekt.ServiceobjektID = serviceauftrag.ServiceobjektFK
+    inner join servicestatus on servicestatus.StatusID = serviceauftrag.StatusFK
+    inner join prioritaet on prioritaet.PrioID = serviceauftrag.PrioFK;
+select * from Benutzter_Serviceauftrag;
+    
+
+-- Alle Mietaufträge ---
+
+create view Mieatauftraege as
+	select mietobjekttyp.Bezeichnung as 'Typ', mietauftrag.Startdatum, mietauftrag.Reservationsdatum, mietauftrag.Dauer,
+		   mietstatus.Bezeichnung as 'Status'
+	from mietauftrag
+    inner join mietobjekttyp on mietobjekttyp.ObjekttypID =	mietauftrag.MietobjektFK
+    inner join mietstatus on mietstatus.StatusID = mietauftrag.StatusFK;
+    
+select * from Mieatauftraege;
+    
+
+-- Alle Services -- 
+create view Services as 
+	select serviceobjekt.Bezeichnung as 'Service', serviceobjekt.Grundpreis, servicestatus.Bezeichnung as 'Status',
+		   prioritaet.Bezeichnung as 'Priorität', serviceauftrag.Startdatum, prioritaet.Dauer
+	from serviceauftrag
+    inner join serviceobjekt on serviceobjekt.ServiceobjektID = serviceauftrag.ServiceobjektFK
+    inner join servicestatus on servicestatus.StatusID = serviceauftrag.StatusFK
+    inner join prioritaet on prioritaet.PrioID = serviceauftrag.PrioFK;
+    
+select * from Services;

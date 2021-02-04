@@ -29,6 +29,15 @@
         border: 1px solid black;
         opacity: 0.8;
     }
+    h1 
+    {
+    text-align: center;
+    }
+    p 
+    {
+    text-align: center;
+    }
+
     </style>
 
 

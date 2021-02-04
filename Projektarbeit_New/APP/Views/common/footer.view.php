@@ -4,7 +4,7 @@
     <!--Grid row-->
     <div class="row">
         <!--Grid column-->
-       <div class="col-sm-6">
+       <div class="col-sm">
         <h6 class="text-uppercase">Kontakt</h5>
 
         <ul class="list-unstyled mb-0">
@@ -20,7 +20,7 @@
         </ul>
        </div>
        <!--Grid column-->
-       <div class="col-sm-5">
+       <div class="col-sm">
          <h6 class="text-uppercase mb-0">e-mail@provider.ch</h5>
 
         <ul class="list-unstyled">
