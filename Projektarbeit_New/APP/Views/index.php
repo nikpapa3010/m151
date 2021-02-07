@@ -1,5 +1,5 @@
 <html>
-<?php include './Views/common/header.view.php' ?>
+<?php include './header.view.php' ?>
     <div class="container">
         <div class="transbox">   
 
@@ -26,7 +26,7 @@
       </ul>
       <p>Ihre Skier sind bei uns standardmässig 7 Tage im Service. Gegen einen Aufpreis sind wir schon in 5 Tagen fertig.</p>
     </div>
-    <?php include './Views/common/footer.view.php' ?>
+    <?php include './footer.view.php' ?>
 
     </body>
 </html>

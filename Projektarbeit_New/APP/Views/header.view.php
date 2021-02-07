@@ -27,7 +27,7 @@
         margin:auto;
         background-color: #ffffff;
         border: 1px solid black;
-        opacity: 0.8;
+        opacity: 0.9;
     }
     h1 
     {
@@ -56,18 +56,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
          <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-             <a class="nav-link" href=".">Startseite</a>
+             <a class="nav-link" href="./index.php">Startseite</a>
             </li>
             <li class="nav-item active">
-             <a class="nav-link" href=".">Kontakt</a>
+             <a class="nav-link" href="./Kontakt.view.php">Kontakt</a>
             </li>
          </ul>   
          <ul class="navbar-nav ml-auto">
              <li class="nav-item active">
-             <a class="nav-link" href=".">Anmelden</a>
+             <a class="nav-link" href="./anmelden.php">Anmelden</a>
              </li>
              <li class="nav-item active">
-             <a class="nav-link" href=".">Registieren</a>
+             <a class="nav-link" href="./registieren.php">Registieren</a>
              </li>
          </ul>
         </div>    

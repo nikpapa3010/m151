@@ -5,17 +5,17 @@ use `Ski_service`;
 
 create table rang
 (
-	RangID int unique not null,
-    Berehtigung int null,
+	RangID int auto_increment unique not null,
+    Berehtigung int unique null,
     Bezeichnung varchar(20) not null,
     Primary key (RangID)
 );
 
 create table benutzer
 (
-	BenuzterID int unique not null,
+	BenuzterID int auto_increment unique not null,
     Passwort varchar(256) not null,
-    Telefon varchar(20) null,
+    Telefon varchar(20)  null,
     Email varchar(50) unique not null,
     Vorname varchar(30) not null,
     Nachname varchar(30) not null,
@@ -28,7 +28,7 @@ create table benutzer
 -- Service Tables --
 create table Prioritaet 
 (
-	PrioID int unique not null,
+	PrioID int auto_increment unique not null,
     Bezeichnung varchar(20) not null,
     Aufschlag decimal(5,2) not null,
     Dauer int not null,
@@ -38,7 +38,7 @@ create table Prioritaet
 
 create table Servicestatus
 (
-	StatusID int unique not null,
+	StatusID int auto_increment unique not null,
     Bezeichnung varchar(20) not null,
     AnzeigenInView bool not null,
     AnzeigenInWarenkorb bool not null,
@@ -48,7 +48,7 @@ create table Servicestatus
 
 create table Serviceobjekt
 (
-	ServiceobjektID int unique not null,
+	ServiceobjektID int auto_increment unique not null,
     Bezeichnung varchar(20) not null,
     Grundpreis decimal(6,2) not null,
     Primary key (ServiceobjektID)
@@ -56,7 +56,7 @@ create table Serviceobjekt
 
 create table Serviceauftrag
 (
-	ServiceauftragID int unique not null,
+	ServiceauftragID int auto_increment unique not null,
     Startdatum	date not null,
     StatusFK int unique not null, 
     ServiceobjektFK int unique not null,
@@ -75,7 +75,7 @@ create table Serviceauftrag
 
 create table Mietstatus
 (
-	StatusID int unique not null,
+	StatusID int auto_increment unique not null,
     Bezeichnung varchar(20) not null,
     AnzeigenInView bool not null,
     AnzeigenInWarenkorb bool not null,
@@ -91,7 +91,7 @@ create table Mietobjekttyp
 
 create table Mietobjekt
 (
-	MietobjektID int unique not null,
+	MietobjektID int auto_increment unique not null,
     Koerpergroesse int not null,
     Altersgrupp enum('Kind','Jugendlich','Erwachsen'),
     Geschlecht enum('m','w','d'),
@@ -103,18 +103,9 @@ create table Mietobjekt
 
 
 
-
--- Procedures for Create User, insert Serviceauftrag, insert Mietauftrag --
-
-
-
-
-
-
-
 create table Mietauftrag
 (
-	MietauftragID int unique not null,
+	MietauftragID int auto_increment unique not null,
     Reservationsdatum date not null,
     Startdatum date not null,
     Dauer int not null,
@@ -127,6 +118,56 @@ create table Mietauftrag
     Foreign key(StatusFK) references Mietstatus(StatusID)
     
 );
+
+
+
+
+
+-- Procedures for Create User, insert Serviceauftrag, insert Mietauftrag --
+
+-- Create User
+DELIMITER $$
+CREATE PROCEDURE Createuser
+(
+	in uVorname varchar(30),
+    in uNachname varchar(30),
+    in uPasswort varchar(256),
+    in uTelefon varchar(20),
+    in uEmail varchar(50),
+    in rBerehtigung int(11),
+    in rBezeichnung varchar(20)
+)
+BEGIN
+                
+    insert into rang(Berehtigung, Bezeichnung)
+				values(rBerehtigung, rBezeichnung);
+	insert into benutzer(Vorname, Nachname, Passwort, Telefon, Email, RangFK)
+				values(uVorname, uNachname, uPasswort, uTelefon, uEmail, SCOPE_IDENTITY());
+	
+END $$
+Delimiter ;
+
+call Createuser('Park','Hans','bbb',' ','Park@gmail.com', 2, 'User');
+
+
+select * from benutzer;
+select * from rang;
+
+
+
+-- insert Serviceauftrag
+
+DELIMITER $$
+create procedure InsertService
+(
+	saDatum date,
+    soBezeichnung varchar(20),
+    soGrundpreis decimal(6,2)
+)
+begin
+
+end $$
+delimiter;
 
 
 

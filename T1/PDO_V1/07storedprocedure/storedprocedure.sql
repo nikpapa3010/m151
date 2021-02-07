@@ -4,3 +4,6 @@ BEGIN
  SELECT customerName, creditlimit
  FROM customers;
 END$$
+
+
+
