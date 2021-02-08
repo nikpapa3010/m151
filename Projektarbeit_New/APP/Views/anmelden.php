@@ -4,7 +4,7 @@
 
         <div class="container">
           <div class="transbox">
-             <h1>Registrierung</h1>
+             <h1>Anmeldung</h1>
              
 
     
@@ -25,7 +25,6 @@
         </div>
       </form>
     </div>
-<br>
     <?php include './footer.view.php' ?>
     </body>
 </html>

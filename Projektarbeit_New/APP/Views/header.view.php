@@ -33,11 +33,10 @@
     {
     text-align: center;
     }
-    p 
+    .pcenter  
     {
     text-align: center;
     }
-
     </style>
 
 
