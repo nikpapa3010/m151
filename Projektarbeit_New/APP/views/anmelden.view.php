@@ -1,18 +1,10 @@
-<html>
-    <body>
-    <?php include './header.view.php' ?>
-
-        <div class="container">
-          <div class="transbox">
-             <h1>Anmeldung</h1>
-             
-
-    
-              <br>
-              <br>
-                
+<?php
+function drawAnmeldenView() {
+?>
+    <div class="transbox">
+      <h1>Anmeldung</h1>
       <form action='<?php echo $_SERVER["PHP_SELF"]; ?>' method="POST">
-      <div class="form-group">
+        <div class="form-group">
           <label for="username">Benutzername / Email</label><br>
           <input type="text" class="form-control" name="username" id="username" placeholder="Benutzername / Email" required>
         </div>
@@ -25,6 +17,6 @@
         </div>
       </form>
     </div>
-    <?php include './footer.view.php' ?>
-    </body>
-</html>
+<?php
+}
+?>
