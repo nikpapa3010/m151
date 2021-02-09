@@ -11,19 +11,19 @@ function drawNavbar(bool $loggedin = false) {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="./index.php">Startseite</a>
+            <a class="nav-link" href=".">Startseite</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="./Kontakt.view.php">Kontakt</a>
+            <a class="nav-link" href="./kontakt.php">Kontakt</a>
           </li>
         </ul>   
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-            <a class="nav-link" href="./anmelden.php">Anmelden</a>
-            </li>
-            <li class="nav-item active">
+          <li class="nav-item active">
+            <a class="nav-link" href="./login.php">Anmelden</a>
+          </li>
+          <li class="nav-item active">
             <a class="nav-link" href="./registieren.php">Registieren</a>
-            </li>
+          </li>
         </ul>
       </div>
     </nav>
