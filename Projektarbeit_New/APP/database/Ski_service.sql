@@ -6,21 +6,21 @@ use `Ski_service`;
 create table rang
 (
 	RangID int auto_increment unique not null,
-    Berehtigung int unique null,
+    Berechtigung int unique null,
     Bezeichnung varchar(20) not null,
     Primary key (RangID)
 );
 
 create table benutzer
 (
-	BenuzterID int auto_increment unique not null,
+	BenutzerID int auto_increment unique not null,
     Passwort varchar(256) not null,
     Telefon varchar(20)  null,
     Email varchar(50) unique not null,
     Vorname varchar(30) not null,
     Nachname varchar(30) not null,
     RangFK int unique,
-    Primary key (BenuzterID),
+    Primary key (BenutzerID),
     Foreign key (RangFK) references Rang(RangID)
 );
 
@@ -66,7 +66,7 @@ create table Serviceauftrag
 	Foreign key (ServiceobjektFK) references Serviceobjekt(ServiceobjektID),
     Foreign key (PrioFK) references Prioritaet(PrioID),
     Foreign key (StatusFK) references Servicestatus(StatusID),
-    Foreign key (BenutzerFK) references benutzer(BenuzterID)
+    Foreign key (BenutzerFK) references benutzer(BenutzerID)
 
 );
 
@@ -113,13 +113,16 @@ create table Mietauftrag
     MietobjektFK int unique,
     StatusFK int unique,
     Primary key (MietauftragID),
-    Foreign key(BenutzerFK) references Benutzer(BenuzterID),
+    Foreign key(BenutzerFK) references Benutzer(BenutzerID),
     Foreign key(MietobjektFK) references Mietobjekt(MietobjektID),
     Foreign key(StatusFK) references Mietstatus(StatusID)
     
 );
 
 
-
+insert into rang (RangID, Berechtigung, Bezeichnung)
+values	(1, 0, "Benutzer"),
+		(2, 1, "Mitarbeiter"),
+        (3, 2, "Admin");
 
 
