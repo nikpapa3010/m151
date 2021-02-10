@@ -24,7 +24,7 @@ BEGIN
 END $$
 Delimiter ;
 
-call Createuser('Hans','Müller','oops',' ','Hans@gmail.com', 1, 'User');
+call Createuser('Hans','Müller','oops','','Hans@gmail.com', 1, 'User');
 
 
 select * from benutzer;

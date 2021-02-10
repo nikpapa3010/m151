@@ -22,7 +22,7 @@ function drawNavbar(bool $loggedin = false) {
             <a class="nav-link" href="./login.php">Anmelden</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="./registieren.php">Registieren</a>
+            <a class="nav-link" href="./registrieren.php">Registrieren</a>
           </li>
         </ul>
       </div>

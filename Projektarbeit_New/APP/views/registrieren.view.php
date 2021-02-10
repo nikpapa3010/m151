@@ -11,7 +11,7 @@ function drawRegistrierenView() {
             <input type="Vorname" class="form-control" id="Vorname" name="Vorname" placeholder="Vorname">   
           </div>
           <div class="col-md-6">
-            <label for="Nachname"> Nachname</label>
+            <label for="Nachname">Nachname</label>
             <input type="Nachname" class="form-control" id="Nachname" name="Nachname" placeholder="Nachname">   
           </div>
         </div>
@@ -21,7 +21,7 @@ function drawRegistrierenView() {
             <input type="email" class="form-control" id="email" name="email" placeholder="E-Mail">
           </div>
           <div class="col-md">
-            <label for="tel">Telofon (Optional)</label>
+            <label for="tel">Telefon (Optional)</label>
             <input type="tel" class="form-control" id="tel" name="tel" placeholder="012 345 67 89" pattern="0[0-9]{2}[-/ ]*[0-9]{3}[- ]*[0-9]{2}[- ]*[0-9]{2}">
           </div>
         </div>

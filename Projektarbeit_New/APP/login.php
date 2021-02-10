@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
   
 }
 
-drawPageHead('Startseite');
+drawPageHead('Login');
 drawNavbar(isset($_SESSION['username']));
 drawAnmeldenView();
 drawFooter();
