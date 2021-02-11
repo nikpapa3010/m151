@@ -85,8 +85,9 @@ create table Mietstatus
 
 create table Mietobjekttyp
 (
-	ObjekttypID int not null,
-    Bezeichnung varchar(20) not null
+	ObjekttypID int auto_increment not null,
+    Bezeichnung varchar(20) not null,
+    Primary key (ObjekttypID)
 );
 
 create table Mietobjekt
