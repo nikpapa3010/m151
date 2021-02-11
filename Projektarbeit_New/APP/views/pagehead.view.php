@@ -29,9 +29,8 @@ function drawPageHead(string $title) {
     .transbox
     {
       margin: auto;
-      background-color: #ffffff;
+      background-color: #ffffffe1;
       border: 1px solid black;
-      opacity: 0.9;
       padding: 10px;
     }
 

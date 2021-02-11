@@ -5,21 +5,21 @@ use `Ski_service`;
 
 create table rang
 (
-	RangID int auto_increment unique not null,
-    Berechtigung int unique null,
+	RangID int auto_increment not null,
+    Berechtigung int null,
     Bezeichnung varchar(20) not null,
     Primary key (RangID)
 );
 
 create table benutzer
 (
-	BenutzerID int auto_increment unique not null,
+	BenutzerID int auto_increment not null,
     Passwort varchar(256) not null,
     Telefon varchar(20)  null,
     Email varchar(50) unique not null,
     Vorname varchar(30) not null,
     Nachname varchar(30) not null,
-    RangFK int unique,
+    RangFK int,
     Primary key (BenutzerID),
     Foreign key (RangFK) references Rang(RangID)
 );
@@ -28,7 +28,7 @@ create table benutzer
 -- Service Tables --
 create table Prioritaet 
 (
-	PrioID int auto_increment unique not null,
+	PrioID int auto_increment not null,
     Bezeichnung varchar(20) not null,
     Aufschlag decimal(5,2) not null,
     Dauer int not null,
@@ -38,7 +38,7 @@ create table Prioritaet
 
 create table Servicestatus
 (
-	StatusID int auto_increment unique not null,
+	StatusID int auto_increment not null,
     Bezeichnung varchar(20) not null,
     AnzeigenInView bool not null,
     AnzeigenInWarenkorb bool not null,
@@ -48,7 +48,7 @@ create table Servicestatus
 
 create table Serviceobjekt
 (
-	ServiceobjektID int auto_increment unique not null,
+	ServiceobjektID int auto_increment not null,
     Bezeichnung varchar(20) not null,
     Grundpreis decimal(6,2) not null,
     Primary key (ServiceobjektID)
@@ -56,12 +56,12 @@ create table Serviceobjekt
 
 create table Serviceauftrag
 (
-	ServiceauftragID int auto_increment unique not null,
+	ServiceauftragID int auto_increment not null,
     Startdatum	date not null,
-    StatusFK int unique not null, 
-    ServiceobjektFK int unique not null,
-    PrioFK int unique not null,
-    BenutzerFK int unique not null,
+    StatusFK int not null, 
+    ServiceobjektFK int not null,
+    PrioFK int not null,
+    BenutzerFK int not null,
     Primary key (ServiceauftragID),
 	Foreign key (ServiceobjektFK) references Serviceobjekt(ServiceobjektID),
     Foreign key (PrioFK) references Prioritaet(PrioID),
@@ -75,7 +75,7 @@ create table Serviceauftrag
 
 create table Mietstatus
 (
-	StatusID int auto_increment unique not null,
+	StatusID int auto_increment not null,
     Bezeichnung varchar(20) not null,
     AnzeigenInView bool not null,
     AnzeigenInWarenkorb bool not null,
@@ -85,18 +85,18 @@ create table Mietstatus
 
 create table Mietobjekttyp
 (
-	ObjekttypID int unique not null,
+	ObjekttypID int not null,
     Bezeichnung varchar(20) not null
 );
 
 create table Mietobjekt
 (
-	MietobjektID int auto_increment unique not null,
+	MietobjektID int auto_increment not null,
     Koerpergroesse int not null,
     Altersgrupp enum('Kind','Jugendlich','Erwachsen'),
     Geschlecht enum('m','w','d'),
     PreisProTag decimal(5,2),
-    ObjekttypFK int unique,
+    ObjekttypFK int,
     Primary key(MietobjektID),
     Foreign key(ObjekttypFK) references Mietobjekttyp(ObjekttypID)
 );
@@ -105,13 +105,13 @@ create table Mietobjekt
 
 create table Mietauftrag
 (
-	MietauftragID int auto_increment unique not null,
+	MietauftragID int auto_increment not null,
     Reservationsdatum date not null,
     Startdatum date not null,
     Dauer int not null,
-    BenutzerFK int unique,
-    MietobjektFK int unique,
-    StatusFK int unique,
+    BenutzerFK int,
+    MietobjektFK int,
+    StatusFK int,
     Primary key (MietauftragID),
     Foreign key(BenutzerFK) references Benutzer(BenutzerID),
     Foreign key(MietobjektFK) references Mietobjekt(MietobjektID),
@@ -126,3 +126,4 @@ values	(1, 0, "Benutzer"),
         (3, 2, "Admin");
 
 
+select * from benutzer;

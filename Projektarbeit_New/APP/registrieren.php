@@ -5,6 +5,17 @@ require_once 'requireAll.inc.php';
 
 $errors = [];
 
+$vn = '';
+$nn = '';
+$em = '';
+$tl = '';
+$pw = '';
+$pwwh = '';
+
+if (isset($_SESSION['username'])) { ?>
+  <meta http-equiv="refresh" content="0; url='.'" />
+<?php }
+
 if (isset($_POST['submit'])) {
   $vn = trim($_POST['Vorname']);
   $nn = trim($_POST['Nachname']);
@@ -24,9 +35,14 @@ if (isset($_POST['submit'])) {
   }
   if ($tl == '') {
     $tl = null;
+  } else if (!preg_match("/0[0-9]{2}[-\/ ]*[0-9]{3}[- ]*[0-9]{2}[- ]*[0-9]{2}/", $tl)) {
+    $errors[] = "Telefonnummer muss gültig sein!";
   }
   if ($pw == '') {
     $errors[] = 'Passwort darf nicht leer sein!';
+  }
+  if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/", $pw)) {
+    $errors[] = "Passwort muss Grossbuchstaben, Kleinbuchstaben und Zahlen beinhalten und mindestens 8 Zeichen lang sein!";
   }
   if ($pw != $pwwh) {
     $errors[] = 'Passwörter müssen übereinstimmen!';
@@ -36,25 +52,21 @@ if (isset($_POST['submit'])) {
   $stmt = $pdo->prepare('select BenutzerID from benutzer where email = :em');
   $stmt->execute([':em' => $em]);
   if (count($stmt->fetchAll()) > 0) {
-    throw new UnexpectedValueException('Benutzer existiert bereits!');
+    $errors[] = 'Benutzer existiert bereits!';
   }
-
-  if (count($errors) == 0) {
-    $stmt = $pdo->prepare('insert into benutzer (Vorname,Nachname,Passwort,Telefon,Email,RangFK) values (:vn,:nn,:pw,:tl,:em,1);');
-    $stmt->execute([':vn' => $vn, ':nn' => $nn, ':pw' => $pw, ':tl' => $tl, ':em' => $em]);
-    echo 'Erfolgreich!';
-  } else {
-    foreach ($errors as $e) {
-      echo $e . '<br />';
-    }
-  }
-
-
 }
 
 drawPageHead('Registrieren');
 drawNavbar(isset($_SESSION['username']));
-drawRegistrierenView();
+
+if (isset($_POST['submit'])) {
+  if (count($errors) == 0) {
+    $stmt = $pdo->prepare('insert into benutzer (Vorname,Nachname,Passwort,Telefon,Email,RangFK) values (:vn,:nn,:pw,:tl,:em,1);');
+    $stmt->execute([':vn' => $vn, ':nn' => $nn, ':pw' => password_hash($pw, PASSWORD_DEFAULT), ':tl' => $tl, ':em' => $em]);
+  }
+}
+
+drawRegistrierenView(isset($_POST["submit"]), $errors, $vn, $nn, $em, $tl);
 drawFooter();
 drawPageFoot();
 ?>
