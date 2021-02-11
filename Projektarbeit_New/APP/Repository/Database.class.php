@@ -5,8 +5,8 @@ class Database {
   public static $port = '3306';
   public static $unix_socket = null;
   public static $charset = 'utf8';
-  public static $usernames = ['root'];
-  public static $passwords = [null];
+  public static $usernames = ['root', 'root', 'root'];
+  public static $passwords = [null, null, null];
 
   public static function connect(int $usernameid = 0)
   {
