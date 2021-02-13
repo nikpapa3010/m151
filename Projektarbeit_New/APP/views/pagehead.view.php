@@ -4,7 +4,7 @@ function drawPageHead(string $title) {
 <!DOCTYPE html>
 <html>
 <head>
-  <title><?php echo $title . ' | ' . GeneralVariables::$MainPageName ?></title>
+  <title><?php echo htmlspecialchars($title . ' | ' . GeneralVariables::$MainPageName); ?></title>
   
   <!-- Required meta tags -->
   <meta charset="utf-8">
