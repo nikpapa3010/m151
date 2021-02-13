@@ -8,7 +8,7 @@ function drawServiceView() {
 
       <form action='<?php echo $_SERVER["PHP_SELF"]; ?>' method="POST">
         <div class="form-group">
-          <label for="Priorität">Prioritaet</label><br>
+          <label for="Priorität">Priorität</label><br>
           <input type="text" class="form-control" name="Priorität" id="Priorität" placeholder=" " required>
         </div>
         <div class="form-group">
