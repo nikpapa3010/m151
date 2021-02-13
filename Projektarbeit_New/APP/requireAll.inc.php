@@ -30,5 +30,6 @@ require_once "./views/pagehead.view.php";
 require_once "./views/registrieren.view.php";
 require_once "./Views/Service.view.php";
 require_once "./Views/Mietformular.view.php";
+require_once "./Views/Warenkorb.view.php";
 // 
 ?>
