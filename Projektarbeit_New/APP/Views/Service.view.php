@@ -15,7 +15,7 @@ function drawServiceView() {
           <label for="Servicetyp">Priorität</label><br>
           <input type="Priorität" class="form-control" name="Priorität" id="Priorität" placeholder="Passwort" required>
         </div>
-
+      </form>
     </div>
 <?php
 }

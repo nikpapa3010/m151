@@ -98,6 +98,7 @@ create table Mietobjekt
     Altersgruppe enum('Kind','Jugendlich','Erwachsen'),
     Geschlecht enum('m','w','d','u'),
     PreisProTag decimal(5,2),
+    BildLink varchar(256),
     ObjekttypFK int,
     Primary key(MietobjektID),
     Foreign key(ObjekttypFK) references Mietobjekttyp(ObjekttypID)
@@ -111,6 +112,7 @@ create table Mietauftrag
     Reservationsdatum date not null,
     Startdatum date not null,
     Dauer int not null,
+    Menge int,
     BenutzerFK int,
     MietobjektFK int,
     StatusFK int,
