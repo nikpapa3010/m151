@@ -1,14 +1,14 @@
 <?php
 class Benutzer_Mietauftrag {
-  public $Nachname = '';
-  public $Vorname = '';
-  public $Passwort = '';
-  public $Telefon = '';
+  public $Name = '';
   public $Email = '';
   public $Miete = '';
   public $Status = '';
   public $Reservationsdatum = '';
   public $Startdatum = '';
-  public $Dauer = 0;
+  public $Enddatum = 0;
+  public $Preis = 0.0;
+  public $anzInView = false;
+  public $anzInWk = false;
 }
 ?>

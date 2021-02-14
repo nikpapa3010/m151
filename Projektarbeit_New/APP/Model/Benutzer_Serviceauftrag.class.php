@@ -1,15 +1,14 @@
 <?php
 class Benutzer_Serviceauftrag {
-  public $Nachname = '';
-  public $Vorname = '';
-  public $Passwort = '';
-  public $Telefon = '';
+  public $Name = '';
   public $Email = '';
   public $Service = '';
-  public $Grundpreis = 0.0;
+  public $Preis = 0.0;
   public $Status = '';
-  public $Startdatum = '';
   public $Prioritaet = '';
-  public $Dauer = 0;
+  public $Startdatum = '';
+  public $EndDatum = '';
+  public $anzInView = false;
+  public $anzInWk = false;
 }
 ?>

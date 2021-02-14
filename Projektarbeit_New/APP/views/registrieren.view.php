@@ -15,7 +15,7 @@ function drawRegistrierenView(bool $abgesendet, array $errors, string $redirect 
         <?php } else { ?>
           <ul class='alert alert-success'>
           <li>Registrierung erfolgreich!</li>
-          <li>Sie werden in Kürze zur Startseite weitergeleitet.</li>
+          <li>Sie werden in Kürze weitergeleitet.</li>
           <meta http-equiv="Refresh" content="3; url=<?php echo $redirect; ?>" />
           </ul>
         <?php }
@@ -44,7 +44,7 @@ function drawRegistrierenView(bool $abgesendet, array $errors, string $redirect 
             <label for="tel">Telefon (Optional)</label>
             <input type="tel" class="form-control" id="tel" name="tel" placeholder="012 345 67 89"
               pattern="0[0-9]{2}[-/ ]*[0-9]{3}[- ]*[0-9]{2}[- ]*[0-9]{2}"
-              <?php if (isset($_POST['groesse'])) echo 'value="'.$_POST['tel'].'"'; ?> required>
+              <?php if (isset($_POST['groesse'])) echo 'value="'.$_POST['tel'].'"'; ?>>
           </div>
         </div>
         <div class="form-group row">
@@ -58,12 +58,12 @@ function drawRegistrierenView(bool $abgesendet, array $errors, string $redirect 
           </div>
         </div>
         <div class="row">
-          <div class="col-md">
+          <div class="col-sm mb-2 mb-sm-0">
             <a href="login.php<?php if (isset($_GET['redirect'])) echo '?redirect=' . $_GET['redirect']; ?>">
               <button type="button" class="btn btn-outline-primary">Ich habe schon ein Konto</button>
             </a>
           </div>
-          <div class="col-md text-right">
+          <div class="col-sm text-sm-right">
             <button type="submit" class="btn btn-primary" name="submit">Registrieren!</button>
           </div>
         </div>

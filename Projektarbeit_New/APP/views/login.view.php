@@ -15,7 +15,7 @@ function drawLoginView(bool $abgesendet, array $errors, string $redirect = '.') 
         <?php } else { ?>
           <ul class='alert alert-success'>
           <li>Anmeldung erfolgreich!</li>
-          <li>Sie werden in Kürze zur Startseite weitergeleitet.</li>
+          <li>Sie werden in Kürze weitergeleitet.</li>
           <meta http-equiv="Refresh" content="3; url='<?php echo $redirect; ?>'" />
           </ul>
         <?php }
@@ -31,12 +31,12 @@ function drawLoginView(bool $abgesendet, array $errors, string $redirect = '.') 
           <input type="password" class="form-control" name="password" id="password" placeholder="Passwort" required>
         </div>
         <div class="row">
-          <div class="col-md">
+          <div class="col-sm mb-2 mb-sm-0">
             <a href="registrieren.php<?php if (isset($_GET['redirect'])) echo '?redirect=' . $_GET['redirect'] ?>">
               <button type="button" class="btn btn-outline-primary">Ich habe noch kein Konto</button>
             </a>
           </div>
-          <div class="col-md text-right">
+          <div class="col-sm text-sm-right">
             <button type="submit" name="submit" id="submit" class="btn btn-primary">Login</button>
           </div>
         </div>

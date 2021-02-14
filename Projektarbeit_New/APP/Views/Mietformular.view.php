@@ -1,5 +1,5 @@
 <?php
-function drawMietformularView(bool $abgesendet, array $errors) {
+function drawMietformularView(bool $abgesendet, array $errors, array $objtypen) {
 ?>
     <div class="transbox">
       <h1>Schneeportgeräte mieten</h1>
@@ -21,12 +21,13 @@ function drawMietformularView(bool $abgesendet, array $errors) {
 
       <form action='<?php echo $_SERVER["PHP_SELF"]; ?>' method="POST">
         <div class ="form-group">
-          <label for="gesch" class="col-form-label">Geschlecht</label><br />
-          <select class="form-control" name="gesch" id="gesch">
-            <option value="w" <?php if (!isset($_POST['gesch']) || $_POST['gesch'] == 'w') echo 'selected '; ?>>weiblich</option>
-            <option value="m" <?php if (isset($_POST['gesch']) && $_POST['gesch'] == 'm') echo 'selected '; ?>>männlich</option>
-            <option value="d" <?php if (isset($_POST['gesch']) && $_POST['gesch'] == 'd') echo 'selected '; ?>>divers</option>
-            <option value="u" <?php if (isset($_POST['gesch']) && $_POST['gesch'] == 'u') echo 'selected '; ?>>ugly</option>
+          <label for="objtyp" class="col-form-label">Objekttyp</label><br />
+          <select class="form-control" name="objtyp" id="objtyp">
+            <?php foreach ($objtypen as $objtyp) { ?>
+              <option value=<?php echo '"' . $objtyp->ObjekttypID . '"';
+              if (isset($_POST['objtyp']) && $_POST['objtyp'] == $objtyp->ObjekttypID) echo ' selected';
+              ?>><?php echo $objtyp->Bezeichnung; ?></option>
+            <?php } ?>
           </select>
         </div>
 

@@ -144,3 +144,4 @@ values	(1, "Allround-Ski"),
 		(4, "Freeride-Ski"),
 		(5, "Regular-Snowboard"),
 		(6, "Goofy-Snowboard");
+

@@ -32,7 +32,6 @@ if (isset($_POST['submit'])) {
 drawPageHead('Login');
 drawNavbar(isset($_SESSION['username']));
 drawLoginView(isset($_POST['submit']), $errors, isset($_GET['redirect']) ? $_GET['redirect'] : '.');
-echo isset($_GET['redirect']) ? $_GET['redirect'] : '.';
 drawFooter();
 drawPageFoot();
 ?>
