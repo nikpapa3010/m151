@@ -4,7 +4,6 @@ use ski_service;
 
 --------------------- Views -------------------------
 -- Alle benutzter mit Mieatauftrag
-
 create view Benutzer_Mietauftrag as
 	select  benutzer.Nachname + " " + benutzer.Vorname as `Name`, benutzer.Email, mietobjekttyp.Bezeichnung as `Miete`,
 			mietstatus.Bezeichnung as `Status`, Reservationsdatum, Startdatum, adddate(Startdatum, interval Dauer day) as EndDatum,
@@ -31,20 +30,29 @@ create view Benutzer_Serviceauftrag as
 
 -- Alle Mietaufträge ---
 
-create view Mieatauftraege as
+create view Mietauftraege as
 	select mietobjekttyp.Bezeichnung as 'Typ', mietauftrag.Startdatum, mietauftrag.Reservationsdatum, mietauftrag.Dauer,
 		   mietstatus.Bezeichnung as 'Status'
 	from mietauftrag
-    inner join mietobjekttyp on mietobjekttyp.ObjekttypID =	mietauftrag.MietobjektFK
+    inner join mietobjekt on mietobjekt.MietobjektID = mietauftrag.MietobjektFK
+    inner join mietobjekttyp on mietobjekttyp.ObjekttypID = mietobjekt.ObjekttypFK
     inner join mietstatus on mietstatus.StatusID = mietauftrag.StatusFK;
 
     
 
 -- Alle Services -- 
 create view Services as 
-	select serviceobjekt.Bezeichnung as 'Service', serviceobjekt.Grundpreis, servicestatus.Bezeichnung as 'Status',
-		   prioritaet.Bezeichnung as 'Priorität', serviceauftrag.Startdatum, prioritaet.Dauer
+	select serviceobjekt.Bezeichnung as `Service`, serviceobjekt.Grundpreis, servicestatus.Bezeichnung as `Status`,
+		   prioritaet.Bezeichnung as `Prioritaet`, serviceauftrag.Startdatum, prioritaet.Dauer
 	from serviceauftrag
     inner join serviceobjekt on serviceobjekt.ServiceobjektID = serviceauftrag.ServiceobjektFK
     inner join servicestatus on servicestatus.StatusID = serviceauftrag.StatusFK
     inner join prioritaet on prioritaet.PrioID = serviceauftrag.PrioFK;
+
+
+-- Alle Mietobjekte --
+create view Mietobjekte as
+	select MietobjektID, KoerpergroesseVon, KoerpergroesseBis, Altersgruppe, Geschlecht, PreisProTag, BildLink,
+		   mietobjekttyp.Bezeichnung as Objekttyp, ObjekttypID
+    from mietobjekt
+    inner join mietobjekttyp on ObjekttypFK = ObjekttypID;

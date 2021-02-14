@@ -58,13 +58,13 @@ if (isset($_SESSION['username'])) {
     }
 
     if (empty($errors)) {
-      $redir = 'mietauswahl.php' .
-        '?groesse=' . $groesse .
-        '&gesch=' . $gesch .
-        '&alter=' . $alter .
-        '&start=' . $start .
-        '&dauer=' . $dauerzahl .
-        '&objtyp=' . $objtyp;
+      $redir = 'mietauswahl.php';
+      $_SESSION['groesse'] = $groesse;
+      $_SESSION['gesch'] = $gesch;
+      $_SESSION['alter'] = $alter;
+      $_SESSION['start'] = $start;
+      $_SESSION['dauer'] = $dauerzahl;
+      $_SESSION['objtyp'] = $objtyp;
     }
   }
 }

@@ -50,9 +50,9 @@ function drawMietformularView(bool $abgesendet, array $errors, array $objtypen) 
         <div class="form-group">
           <label for="alter" class="col-form-label">Altersgruppe</label><br />
           <select class="form-control" name="alter" id="alter">
-            <option value="Kind" <?php if (isset($_POST['alter']) && $_POST['alter'] == 'Kind') echo 'selected '; ?>>Kind</option>
-            <option value="Jugendlich" <?php if (isset($_POST['alter']) && $_POST['alter'] == 'Jugendlich') echo 'selected '; ?>>Jugendlich</option>
-            <option value="Erwachsen" <?php if (!isset($_POST['alter']) || $_POST['alter'] == 'Erwachsen') echo 'selected '; ?>>Erwachsen</option>
+            <option value="Kind" <?php if (isset($_POST['alter']) && $_POST['alter'] == 'Kind') echo 'selected '; ?>>Kind (unter 12 Jahren)</option>
+            <option value="Jugendlich" <?php if (isset($_POST['alter']) && $_POST['alter'] == 'Jugendlich') echo 'selected '; ?>>Jugendlich (12-25 Jahre)</option>
+            <option value="Erwachsen" <?php if (!isset($_POST['alter']) || $_POST['alter'] == 'Erwachsen') echo 'selected '; ?>>Erwachsen (über 25 Jahren)</option>
             <option value="doof" <?php if (isset($_POST['alter']) && $_POST['alter'] == 'doof') echo 'selected '; ?>>doof</option>
           </select>
         </div>

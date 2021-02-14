@@ -1,9 +1,9 @@
 <?php
-function drawAuftragslisteView(bool $showUser, array $mietauftraege, array $serviceauftraege) {
+function drawAuftragslisteView(bool $showUser, array $mietauftraege, array $serviceauftraege, bool $warenkorb) {
 ?>
     <div class="transbox">
 
-      <h1>Warenkorb</h1>
+      <h1><?php echo $warenkorb ? "Warenkorb" : "Auftragsliste" ?></h1>
 
       <h2>Mietaufträge</h2>
       <table class="table table-striped table-hover">
@@ -64,15 +64,16 @@ function drawAuftragslisteView(bool $showUser, array $mietauftraege, array $serv
           <?php } ?>
         </tbody>    
       </table>
-
-      <div class="row">
-        <div class="col-sm mb-2 mb-sm-0">
-          <button class="btn btn-danger">Alles Löschen!</button>
+      <?php if ($warenkorb) { ?>
+        <div class="row">
+          <div class="col-sm mb-2 mb-sm-0">
+            <button class="btn btn-danger">Alles Löschen!</button>
+          </div>
+          <div class="col-sm text-sm-right">
+            <button class="btn btn-success">Bestellung abschliessen!</button>
+          </div>
         </div>
-        <div class="col-sm text-sm-right">
-          <button class="btn btn-success">Bestellung abschliessen!</button>
-        </div>
-      </div>
+      <?php } ?>
     </div>
 <?php
 }

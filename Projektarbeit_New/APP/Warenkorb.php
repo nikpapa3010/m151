@@ -25,7 +25,7 @@ if (isset($_SESSION['username'])) {
 
 drawPageHead('Warenkorb', isset($_SESSION['username']) ? null : 'login.php?redirect=warenkorb.php');
 drawNavbar(isset($_SESSION['username']));
-drawAuftragslisteView(false, $mietauftraege, $serviceauftraege);
+drawAuftragslisteView(false, $mietauftraege, $serviceauftraege, true);
 drawFooter();
 drawPageFoot();
 ?>
