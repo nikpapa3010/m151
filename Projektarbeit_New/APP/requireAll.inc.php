@@ -24,12 +24,12 @@ require_once "./views/footer.view.php";
 require_once "./views/kontakt.view.php";
 require_once "./views/landingpage.view.php";
 require_once "./views/login.view.php";
+require_once "./Views/mietformular.view.php";
 require_once "./views/navbar.view.php";
 require_once "./views/pagefoot.view.php";
 require_once "./views/pagehead.view.php";
 require_once "./views/registrieren.view.php";
-require_once "./Views/Service.view.php";
-require_once "./Views/Mietformular.view.php";
-require_once "./Views/Warenkorb.view.php";
-// 
+require_once "./Views/service.view.php";
+require_once "./Views/warenkorb.view.php";
+
 ?>

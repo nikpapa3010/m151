@@ -4,7 +4,7 @@ session_start();
 require_once 'requireAll.inc.php';
 
 $errors = [];
-if (isset($_SESSION['username'])) { ?>
+if (isset($_SESSION['username']) && !isset($_POST['submit'])) { ?>
   <meta http-equiv="refresh" content="0; url='.'" />
 <?php }
 
@@ -21,8 +21,9 @@ if (isset($_POST['submit'])) {
       $stmt = $pdo->prepare('select Berechtigung from rang inner join benutzer on RangFK = RangID where Email = :un');
       $stmt->execute([':un' => $_SESSION['username']]);
       $_SESSION['berechtigung'] = $stmt->fetchColumn(0);
+    } else {
+      $errors[] = 'Passwort ist nicht korrekt!';
     }
-    $errors[] = 'Passwort ist nicht korrekt!';
   } else {
     $errors[] = 'Benutzer existiert nicht!';
   }
@@ -30,7 +31,8 @@ if (isset($_POST['submit'])) {
 
 drawPageHead('Login');
 drawNavbar(isset($_SESSION['username']));
-drawLoginView(isset($_POST['submit']), $errors);
+drawLoginView(isset($_POST['submit']), $errors, isset($_GET['redirect']) ? $_GET['redirect'] : '.');
+echo isset($_GET['redirect']) ? $_GET['redirect'] : '.';
 drawFooter();
 drawPageFoot();
 ?>

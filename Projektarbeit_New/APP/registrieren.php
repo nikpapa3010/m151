@@ -54,19 +54,20 @@ if (isset($_POST['submit'])) {
   if (count($stmt->fetchAll()) > 0) {
     $errors[] = 'Benutzer existiert bereits!';
   }
+  
+  if (empty($errors)) {
+    $stmt = $pdo->prepare('insert into benutzer (Vorname,Nachname,Passwort,Telefon,Email,RangFK) values (:vn,:nn,:pw,:tl,:em,1);');
+    $stmt->execute([':vn' => $vn, ':nn' => $nn, ':pw' => password_hash($pw, PASSWORD_DEFAULT), ':tl' => $tl, ':em' => $em]);
+    $_SESSION['username'] = $em;
+    $stmt = $pdo->prepare('select Berechtigung from rang inner join benutzer on RangFK = RangID where Email = :un');
+    $stmt->execute([':un' => $_SESSION['username']]);
+    $_SESSION['berechtigung'] = $stmt->fetchColumn(0);
+  }
 }
 
 drawPageHead('Registrieren');
 drawNavbar(isset($_SESSION['username']));
-
-if (isset($_POST['submit'])) {
-  if (count($errors) == 0) {
-    $stmt = $pdo->prepare('insert into benutzer (Vorname,Nachname,Passwort,Telefon,Email,RangFK) values (:vn,:nn,:pw,:tl,:em,1);');
-    $stmt->execute([':vn' => $vn, ':nn' => $nn, ':pw' => password_hash($pw, PASSWORD_DEFAULT), ':tl' => $tl, ':em' => $em]);
-  }
-}
-
-drawRegistrierenView(isset($_POST["submit"]), $errors, $vn, $nn, $em, $tl);
+drawRegistrierenView(isset($_POST["submit"]), $errors, isset($_GET['redirect']) ? $_GET['redirect'] : '.');
 drawFooter();
 drawPageFoot();
 ?>

@@ -86,16 +86,17 @@ create table Mietstatus
 create table Mietobjekttyp
 (
 	ObjekttypID int auto_increment not null,
-    Bezeichnung varchar(20) not null,
+    Bezeichnung varchar(30) not null,
     Primary key (ObjekttypID)
 );
 
 create table Mietobjekt
 (
 	MietobjektID int auto_increment not null,
-    Koerpergroesse int not null,
-    Altersgrupp enum('Kind','Jugendlich','Erwachsen'),
-    Geschlecht enum('m','w','d'),
+    KoerpergroesseVon int not null,
+    KoerpergroesseBis int not null,
+    Altersgruppe enum('Kind','Jugendlich','Erwachsen'),
+    Geschlecht enum('m','w','d','u'),
     PreisProTag decimal(5,2),
     ObjekttypFK int,
     Primary key(MietobjektID),
@@ -126,5 +127,18 @@ values	(1, 0, "Benutzer"),
 		(2, 1, "Mitarbeiter"),
         (3, 2, "Admin");
 
+insert into Mietstatus (StatusID, Bezeichnung, AnzeigenInView, AnzeigenInWarenkorb, bearbeitbar)
+values	(1, "im Warenkorb", false, true, true),
+		(2, "reserviert", true, false, true),
+        (3, "angefangen", true, false, false),
+        (4, "überfällig", true, false, false),
+        (5, "abgeschlossen", false, false, false),
+        (6, "storniert", false, false, false);
 
-select * from benutzer;
+insert into Mietobjekttyp (ObjekttypID, Bezeichnung)
+values	(1, "Allround-Ski"),
+		(2, "Slalom-Ski"),
+		(3, "All-Mountain-Carving-Ski"),
+		(4, "Freeride-Ski"),
+		(5, "Regular-Snowboard"),
+		(6, "Goofy-Snowboard");

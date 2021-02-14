@@ -1,36 +1,76 @@
 <?php
-function drawMietformularView() {
+function drawMietformularView(bool $abgesendet, array $errors) {
 ?>
     <div class="transbox">
+      <h1>Schneeportgeräte mieten</h1>
 
-      <p class="pcenter">Schneeportgeräte mieten</p>
-      <p class="pcenter">
+      <?php
+      if ($abgesendet) {
+        if (count($errors) > 0) { ?>
+          <ul class='alert alert-danger'>
+          <?php foreach ($errors as $e) {
+            echo "<li>$e</li>";
+          } ?>
+          </ul>
+        <?php } else { ?>
+          <ul class='alert alert-success'>
+            <li>Reservierung erfolgreich!</li>
+          </ul>
+        <?php }
+      } ?>
 
       <form action='<?php echo $_SERVER["PHP_SELF"]; ?>' method="POST">
-        <div class="form-group">
-          <label for="Körpergrösse">Körpergrösse (in cm)</label><br>
-          <input type="number" class="form-control" name="Körpergrösse" id="Körpergrösse" placeholder="180" min="130"  required>
-        </div>
-
         <div class ="form-group">
-          <label for="Geschlecht" class="col-sm2 col-form-label">Geschlecht</label><br>
-          <select class="form-control" name="Geschlecht" >
-          <option value="Test"></option>
+          <label for="gesch" class="col-form-label">Geschlecht</label><br />
+          <select class="form-control" name="gesch" id="gesch">
+            <option value="w" <?php if (!isset($_POST['gesch']) || $_POST['gesch'] == 'w') echo 'selected '; ?>>weiblich</option>
+            <option value="m" <?php if (isset($_POST['gesch']) && $_POST['gesch'] == 'm') echo 'selected '; ?>>männlich</option>
+            <option value="d" <?php if (isset($_POST['gesch']) && $_POST['gesch'] == 'd') echo 'selected '; ?>>divers</option>
+            <option value="u" <?php if (isset($_POST['gesch']) && $_POST['gesch'] == 'u') echo 'selected '; ?>>ugly</option>
           </select>
         </div>
 
+        <div class="form-group">
+          <label for="groesse" class="col-form-label">Körpergrösse (in cm)</label><br />
+          <input type="number" class="form-control" name="groesse" id="groesse" min="80" max="300"
+            <?php if (isset($_POST['groesse'])) echo 'value="'.$_POST['groesse'].'"'; else echo 'value="170"'; ?> required />
+        </div>
+
         <div class ="form-group">
-          <label for="Altergruppe" class="col-sm2 col-form-label">Altergruppe</label><br>
-          <select class="form-control" name="Altergruppe" >
-          <option value="Test"></option>
+          <label for="gesch" class="col-form-label">Geschlecht</label><br />
+          <select class="form-control" name="gesch" id="gesch">
+            <option value="w" <?php if (!isset($_POST['gesch']) || $_POST['gesch'] == 'w') echo 'selected '; ?>>weiblich</option>
+            <option value="m" <?php if (isset($_POST['gesch']) && $_POST['gesch'] == 'm') echo 'selected '; ?>>männlich</option>
+            <option value="d" <?php if (isset($_POST['gesch']) && $_POST['gesch'] == 'd') echo 'selected '; ?>>divers</option>
+            <option value="u" <?php if (isset($_POST['gesch']) && $_POST['gesch'] == 'u') echo 'selected '; ?>>ugly</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="alter" class="col-form-label">Altersgruppe</label><br />
+          <select class="form-control" name="alter" id="alter">
+            <option value="Kind" <?php if (isset($_POST['alter']) && $_POST['alter'] == 'Kind') echo 'selected '; ?>>Kind</option>
+            <option value="Jugendlich" <?php if (isset($_POST['alter']) && $_POST['alter'] == 'Jugendlich') echo 'selected '; ?>>Jugendlich</option>
+            <option value="Erwachsen" <?php if (!isset($_POST['alter']) || $_POST['alter'] == 'Erwachsen') echo 'selected '; ?>>Erwachsen</option>
+            <option value="doof" <?php if (isset($_POST['alter']) && $_POST['alter'] == 'doof') echo 'selected '; ?>>doof</option>
           </select>
         </div>
       
-        <div class="form-group">
-          <label for="Startdatum">Startdatum</label><br>
-          <input type="date" class="form-control" name="Startdatum" id="Startdatum" placeholder="Startdatum" required>
-          <label for="Enddatum">Enddatum</label><br>
-          <input type="date" class="form-control" name="Enddatum" id="Enddatum" placeholder="Enddatum" required>
+        <div class="form-group row">
+          <div class="col-md">
+            <label for="start" class="col-form-label">Startdatum</label><br />
+            <input type="date" class="form-control" name="start" id="start" min="<?php echo date('Y-m-d'); ?>"
+              <?php if (isset($_POST['start'])) echo 'value="'.$_POST['start'].'"'; ?> required />
+          </div>
+          <div class="col-md">
+            <label for="ende" class="col-form-label">Enddatum</label><br />
+            <input type="date" class="form-control" name="ende" id="ende" min="<?php echo date('Y-m-d'); ?>"
+              <?php if (isset($_POST['ende'])) echo 'value="'.$_POST['ende'].'"'; ?> required />
+          </div>
+        </div>
+        
+        <div class="text-right">
+          <button type="submit" class="btn btn-primary" name="submit">Reservieren!</button>
         </div>
 
     </div>
