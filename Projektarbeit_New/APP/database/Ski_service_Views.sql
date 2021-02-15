@@ -18,7 +18,7 @@ create view Benutzer_Mietauftrag as
 
 -- Alle benutzter mit Serviceauftrag
 create view Benutzer_Serviceauftrag as
-	select  benutzer.Nachname + " " + benutzer.Vorname as `Name`, benutzer.Email, Serviceobjekt.Bezeichnung `Service`, 
+	select  concat(benutzer.Nachname, " ", benutzer.Vorname) as `Name`, benutzer.Email, Serviceobjekt.Bezeichnung `Service`, 
     serviceobjekt.Grundpreis + prioritaet.Aufschlag as `Preis`, servicestatus.Bezeichnung as `Status`, prioritaet.Bezeichnung as `Prioritaet`,
     Startdatum, adddate(Startdatum, interval Dauer day) as EndDatum, servicestatus.AnzeigenInView as anzInView, servicestatus.AnzeigenInWarenkorb as anzInWk
     from serviceauftrag 
