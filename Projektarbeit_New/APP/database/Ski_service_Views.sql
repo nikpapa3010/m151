@@ -5,7 +5,7 @@ use ski_service;
 --------------------- Views -------------------------
 -- Alle benutzter mit Mieatauftrag
 create view Benutzer_Mietauftrag as
-	select  benutzer.Nachname + " " + benutzer.Vorname as `Name`, benutzer.Email, mietobjekttyp.Bezeichnung as `Miete`,
+	select  concat(benutzer.Nachname, " ", benutzer.Vorname) as `Name`, benutzer.Email, mietobjekttyp.Bezeichnung as `Miete`,
 			mietstatus.Bezeichnung as `Status`, Reservationsdatum, Startdatum, adddate(Startdatum, interval Dauer day) as EndDatum,
             mietobjekt.PreisProTag * mietauftrag.Dauer * mietauftrag.Menge as Preis, mietstatus.AnzeigenInView as anzInView, mietstatus.AnzeigenInWarenkorb as anzInWk
     from mietauftrag 

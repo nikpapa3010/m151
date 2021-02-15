@@ -73,7 +73,7 @@ function drawMietformularView(bool $abgesendet, array $errors, array $objtypen) 
         <div class="text-right">
           <button type="submit" class="btn btn-primary" name="submit">Reservieren!</button>
         </div>
-
+      </form>
     </div>
 <?php
 }

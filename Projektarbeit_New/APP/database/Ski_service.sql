@@ -150,9 +150,22 @@ values	(1, "Allround-Ski"),
 		(5, "Regular-Snowboard"),
 		(6, "Goofy-Snowboard");
 
+insert into Prioritaet (PrioID, Bezeichnung, Aufschlag, Dauer)
+values	(1, "Standard", 0.0, 7),
+        (2, "Tief", -5.0, 12),
+        (3, "Express", 10.0, 5);
+
 insert into Servicestatus (StatusID, Bezeichnung, AnzeigenInView, AnzeigenInWarenkorb, bearbeitbar)
 values	(1, "im Warenkorb", false, true, true),
 		(2, "reserviert", true, false, true),
         (3, "angefangen", true, false, false),
         (4, "abgeschlossen", false, false, false),
         (5, "storniert", false, false, false);
+
+insert into Serviceobjekt (ServiceobjektID, Bezeichnung, Grundpreis)
+values	(1, "Kleiner Service", 40.0),
+		(2, "Grosser Service", 60.0),
+        (3, "Rennski-Service", 150.0),
+        (4, "Bindungen montieren und einstellen", 20.0),
+        (5, "Fell zuschneiden", 20.0),
+        (6, "Heisswachsen", 20.0);

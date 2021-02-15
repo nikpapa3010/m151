@@ -6,7 +6,7 @@ class Benutzer_Mietauftrag {
   public $Status = '';
   public $Reservationsdatum = '';
   public $Startdatum = '';
-  public $Enddatum = 0;
+  public $EndDatum = '';
   public $Preis = 0.0;
   public $anzInView = false;
   public $anzInWk = false;
