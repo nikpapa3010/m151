@@ -3,6 +3,10 @@ session_start();
 
 require_once 'requireAll.inc.php';
 
+if (!isset($_SESSION['name'])) {
+  $_SESSION['name'] = '';
+}
+
 $redir = null;
 $mietobjekte = [];
 
@@ -32,7 +36,7 @@ if (isset($_SESSION['groesse']) && isset($_SESSION['gesch']) && isset($_SESSION[
 }
 
 drawPageHead('Mietauswahl', $redir);
-drawNavbar(isset($_SESSION['username']));
+drawNavbar(isset($_SESSION['username']), $_SESSION['name']);
 drawMietauswahlView($mietobjekte);
 drawFooter();
 drawPageFoot();

@@ -3,6 +3,10 @@ session_start();
 
 require_once 'requireAll.inc.php';
 
+if (!isset($_SESSION['name'])) {
+  $_SESSION['name'] = '';
+}
+
 if (isset($_SESSION['username']) && isset($_POST['submit'])) {
   $pdo = Database::connect($_SESSION['berechtigung']);
   $pdo->beginTransaction();
@@ -27,7 +31,7 @@ if (isset($_SESSION['username']) && isset($_POST['submit'])) {
 }
 
 drawPageHead('Mietauswahl');
-drawNavbar(isset($_SESSION['username']));
+drawNavbar(isset($_SESSION['username']), );
 drawMietabschlussView();
 drawFooter();
 drawPageFoot();
