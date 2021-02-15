@@ -9,6 +9,7 @@ $serviceobjekte = [];
 
 if (isset($_SESSION['username'])) {
   $pdo = Database::connect($_SESSION['berechtigung']);
+  $pdo->beginTransaction();
 
   $stmt = $pdo->prepare('select * from Prioritaet');
   $stmt->execute([]);
@@ -33,6 +34,7 @@ if (isset($_SESSION['username'])) {
                           'values (:sd, 1, :so, :pr, :uid)');
     $stmt->execute([':sd' => $sd, ':so' => $so, ':pr' => $pr, ':uid' => $userid]);
   }
+  $pdo->commit();
 } else {
   $redir = 'login.php?redirect=service.php';
 }
