@@ -37,6 +37,7 @@ if (isset($_SESSION['username'])) {
     $stmt = $pdo->prepare('insert into Serviceauftrag (Startdatum, StatusFK, ServiceobjektFK, PrioFK, BenutzerFK) ' .
                           'values (:sd, 1, :so, :pr, :uid)');
     $stmt->execute([':sd' => $sd, ':so' => $so, ':pr' => $pr, ':uid' => $userid]);
+    $redir = 'warenkorb.php';
   }
   $pdo->commit();
 } else {

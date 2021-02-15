@@ -2,7 +2,7 @@
 function drawMietformularView(bool $abgesendet, array $errors, array $objtypen) {
 ?>
     <div class="transbox">
-      <h1>Schneeportgeräte mieten</h1>
+      <h1>Schneesportgeräte mieten</h1>
 
       <?php
       if ($abgesendet) {
