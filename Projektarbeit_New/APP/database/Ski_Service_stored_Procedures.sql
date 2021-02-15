@@ -11,12 +11,12 @@ CREATE PROCEDURE Createuser
      in uPasswort varchar(256),
      in uTelefon varchar(20),
      in uEmail varchar(50),
-     in rBerehtigung int(11),
+     in rBerechtigung int(11),
      in rBezeichnung varchar(20)
 )
 BEGIN
-    insert into rang(Berehtigung, Bezeichnung)
-				values(rBerehtigung, rBezeichnung);
+    insert into rang(Berechtigung, Bezeichnung)
+				values(rBerechtigung, rBezeichnung);
                 
 	insert into benutzer(Vorname, Nachname, Passwort, Telefon, Email, RangFK) 
 				 values(uVorname, uNachname, uPasswort, uTelefon, uEmail,(select RangID from rang where rangID ));
