@@ -4,7 +4,7 @@ function drawLandingPageView() {
     <div class="transbox">   
 
       <h1 class="h1">Willkommen!</h1>
-      <p class="p">
+      <p class="pcenter">
         Der Ski-Service Ihrer Träume!<br>
         Pünktlich, günstig und gut!
       </p>

@@ -1,8 +1,8 @@
 <?php
-function drawMietformularView(bool $abgesendet, array $errors) {
+function drawMietformularView(bool $abgesendet, array $errors, array $objtypen) {
 ?>
     <div class="transbox">
-      <h1>Schneeportgeräte mieten</h1>
+      <h1>Schneesportgeräte mieten</h1>
 
       <?php
       if ($abgesendet) {
@@ -21,12 +21,13 @@ function drawMietformularView(bool $abgesendet, array $errors) {
 
       <form action='<?php echo $_SERVER["PHP_SELF"]; ?>' method="POST">
         <div class ="form-group">
-          <label for="gesch" class="col-form-label">Geschlecht</label><br />
-          <select class="form-control" name="gesch" id="gesch">
-            <option value="w" <?php if (!isset($_POST['gesch']) || $_POST['gesch'] == 'w') echo 'selected '; ?>>weiblich</option>
-            <option value="m" <?php if (isset($_POST['gesch']) && $_POST['gesch'] == 'm') echo 'selected '; ?>>männlich</option>
-            <option value="d" <?php if (isset($_POST['gesch']) && $_POST['gesch'] == 'd') echo 'selected '; ?>>divers</option>
-            <option value="u" <?php if (isset($_POST['gesch']) && $_POST['gesch'] == 'u') echo 'selected '; ?>>ugly</option>
+          <label for="objtyp" class="col-form-label">Objekttyp</label><br />
+          <select class="form-control" name="objtyp" id="objtyp">
+            <?php foreach ($objtypen as $objtyp) { ?>
+              <option value=<?php echo '"' . $objtyp->ObjekttypID . '"';
+              if (isset($_POST['objtyp']) && $_POST['objtyp'] == $objtyp->ObjekttypID) echo ' selected';
+              ?>><?php echo $objtyp->Bezeichnung; ?></option>
+            <?php } ?>
           </select>
         </div>
 
@@ -49,9 +50,9 @@ function drawMietformularView(bool $abgesendet, array $errors) {
         <div class="form-group">
           <label for="alter" class="col-form-label">Altersgruppe</label><br />
           <select class="form-control" name="alter" id="alter">
-            <option value="Kind" <?php if (isset($_POST['alter']) && $_POST['alter'] == 'Kind') echo 'selected '; ?>>Kind</option>
-            <option value="Jugendlich" <?php if (isset($_POST['alter']) && $_POST['alter'] == 'Jugendlich') echo 'selected '; ?>>Jugendlich</option>
-            <option value="Erwachsen" <?php if (!isset($_POST['alter']) || $_POST['alter'] == 'Erwachsen') echo 'selected '; ?>>Erwachsen</option>
+            <option value="Kind" <?php if (isset($_POST['alter']) && $_POST['alter'] == 'Kind') echo 'selected '; ?>>Kind (unter 12 Jahren)</option>
+            <option value="Jugendlich" <?php if (isset($_POST['alter']) && $_POST['alter'] == 'Jugendlich') echo 'selected '; ?>>Jugendlich (12-25 Jahre)</option>
+            <option value="Erwachsen" <?php if (!isset($_POST['alter']) || $_POST['alter'] == 'Erwachsen') echo 'selected '; ?>>Erwachsen (über 25 Jahren)</option>
             <option value="doof" <?php if (isset($_POST['alter']) && $_POST['alter'] == 'doof') echo 'selected '; ?>>doof</option>
           </select>
         </div>
@@ -72,7 +73,7 @@ function drawMietformularView(bool $abgesendet, array $errors) {
         <div class="text-right">
           <button type="submit" class="btn btn-primary" name="submit">Reservieren!</button>
         </div>
-
+      </form>
     </div>
 <?php
 }

@@ -44,6 +44,10 @@ function drawPageHead(string $title, string $redirect = null, int $redirsec = 0)
     {
     text-align: center;
     }
+    .nav-link
+    {
+      color: black !important ;
+    }
 
     .pcenter  
     {

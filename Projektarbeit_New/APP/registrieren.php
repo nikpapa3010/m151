@@ -3,6 +3,10 @@ session_start();
 
 require_once 'requireAll.inc.php';
 
+if (!isset($_SESSION['name'])) {
+  $_SESSION['name'] = '';
+}
+
 $errors = [];
 
 $vn = '';
@@ -49,6 +53,7 @@ if (isset($_POST['submit'])) {
   }
 
   $pdo = Database::connect();
+  $pdo->beginTransaction();
   $stmt = $pdo->prepare('select BenutzerID from benutzer where email = :em');
   $stmt->execute([':em' => $em]);
   if (count($stmt->fetchAll()) > 0) {
@@ -62,11 +67,13 @@ if (isset($_POST['submit'])) {
     $stmt = $pdo->prepare('select Berechtigung from rang inner join benutzer on RangFK = RangID where Email = :un');
     $stmt->execute([':un' => $_SESSION['username']]);
     $_SESSION['berechtigung'] = $stmt->fetchColumn(0);
+    $_SESSION['name'] = $vn . " " . $nn;
   }
+  $pdo->commit();
 }
 
 drawPageHead('Registrieren');
-drawNavbar(isset($_SESSION['username']));
+drawNavbar(isset($_SESSION['username']), $_SESSION['name']);
 drawRegistrierenView(isset($_POST["submit"]), $errors, isset($_GET['redirect']) ? $_GET['redirect'] : '.');
 drawFooter();
 drawPageFoot();

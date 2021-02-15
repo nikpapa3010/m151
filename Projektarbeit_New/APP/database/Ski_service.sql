@@ -129,13 +129,18 @@ values	(1, 0, "Benutzer"),
 		(2, 1, "Mitarbeiter"),
         (3, 2, "Admin");
 
+insert into Benutzer (Email, Passwort, Telefon, Vorname, Nachname, RangFK)
+values	("runasophie.roth@gmail.com", "$2y$10$0Coew9LRRAIkrSbW4hIr2eLLxueoMgtp1Z8o8oby1F.0xk0l4rVue", "076 799 97 42", "Runa", "Roth", 3),
+		("nikolaos.papadopoulos@student.ibz.ch", "$2y$10$0Coew9LRRAIkrSbW4hIr2eLLxueoMgtp1Z8o8oby1F.0xk0l4rVue", null, "Nikolaos", "Papadopoulos", 3);
+
 insert into Mietstatus (StatusID, Bezeichnung, AnzeigenInView, AnzeigenInWarenkorb, bearbeitbar)
 values	(1, "im Warenkorb", false, true, true),
 		(2, "reserviert", true, false, true),
         (3, "angefangen", true, false, false),
         (4, "überfällig", true, false, false),
-        (5, "abgeschlossen", false, false, false),
-        (6, "storniert", false, false, false);
+        (5, "zurückgegeben", false, false, false),
+        (6, "abgeschlossen", false, false, false),
+        (7, "storniert", false, false, false);
 
 insert into Mietobjekttyp (ObjekttypID, Bezeichnung)
 values	(1, "Allround-Ski"),
@@ -144,3 +149,25 @@ values	(1, "Allround-Ski"),
 		(4, "Freeride-Ski"),
 		(5, "Regular-Snowboard"),
 		(6, "Goofy-Snowboard");
+
+insert into Prioritaet (PrioID, Bezeichnung, Aufschlag, Dauer)
+values	(1, "Standard", 0.0, 7),
+        (2, "Tief", -5.0, 12),
+        (3, "Express", 10.0, 5);
+
+insert into Servicestatus (StatusID, Bezeichnung, AnzeigenInView, AnzeigenInWarenkorb, bearbeitbar)
+values	(1, "im Warenkorb", false, true, true),
+		(2, "reserviert", true, false, true),
+        (3, "angefangen", true, false, false),
+        (4, "abgeschlossen", false, false, false),
+        (5, "storniert", false, false, false);
+
+insert into Serviceobjekt (ServiceobjektID, Bezeichnung, Grundpreis)
+values	(1, "Kleiner Service", 40.0),
+		(2, "Grosser Service", 60.0),
+        (3, "Rennski-Service", 150.0),
+        (4, "Bindungen montieren und einstellen", 20.0),
+        (5, "Fell zuschneiden", 20.0),
+        (6, "Heisswachsen", 20.0);
+
+
