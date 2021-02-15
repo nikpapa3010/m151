@@ -33,7 +33,7 @@ function drawNavbar(bool $loggedin = false, string $username = null) {
           <?php if($loggedin){ ?>
           <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" color="#fff" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <?php echo $username ?>
+                  <?php echo htmlspecialchars($_SESSION['name']) ?>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="./Warenkorb.php">Warenkorb</a>
