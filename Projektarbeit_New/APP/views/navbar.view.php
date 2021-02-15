@@ -18,25 +18,12 @@ function drawNavbar(bool $loggedin = false) {
           </li>
         </ul>   
         <ul class="navbar-nav ml-auto">
-        <?php if (isset($_SESSION["Vorname"])) { ?>
-          <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <?php echo htmlspecialchars($_SESSION["Vorname"]) ?>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="./Warenkorb.view.php">Dashboard</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="">Ausloggen</a>
-                </div>
-          </li>
-          <?php } else { ?>
           <li class="nav-item active">
             <a class="nav-link" href="./login.php">Anmelden</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="./registrieren.php">Registrieren</a>
           </li>
-            <?php } ?>
         </ul>
       </div>
     </nav>
