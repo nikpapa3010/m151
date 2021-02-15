@@ -3,6 +3,10 @@ session_start();
 
 require_once 'requireAll.inc.php';
 
+if (!isset($_SESSION['name'])) {
+  $_SESSION['name'] = '';
+}
+
 $errors = [];
 $redir = '';
 $objtypen = [];
@@ -75,7 +79,7 @@ drawPageHead('Mietformular',
   isset($_SESSION['username']) ? (
     (isset($_POST['submit']) && empty($errors)) ? $redir : null
   ) : 'login.php?redirect=mietformular.php');
-drawNavbar(isset($_SESSION['username']));
+drawNavbar(isset($_SESSION['username']), $_SESSION['name']);
 drawMietformularView(isset($_POST['submit']), $errors, $objtypen);
 drawFooter();
 drawPageFoot();

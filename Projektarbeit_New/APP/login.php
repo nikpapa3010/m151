@@ -3,6 +3,10 @@ session_start();
 
 require_once 'requireAll.inc.php';
 
+if (!isset($_SESSION['name'])) {
+  $_SESSION['name'] = '';
+}
+
 $errors = [];
 if (isset($_SESSION['username']) && !isset($_POST['submit'])) { ?>
   <meta http-equiv="refresh" content="0; url='.'" />
@@ -18,9 +22,11 @@ if (isset($_POST['submit'])) {
   if ($pwh = $stmt->fetchColumn(0)) {
     if (password_verify($pw, $pwh)) {
       $_SESSION['username'] = $em;
-      $stmt = $pdo->prepare('select Berechtigung from rang inner join benutzer on RangFK = RangID where Email = :un');
+      $stmt = $pdo->prepare('select Berechtigung, concat(Vorname, " ", Nachname) as Name from rang inner join benutzer on RangFK = RangID where Email = :un');
       $stmt->execute([':un' => $_SESSION['username']]);
-      $_SESSION['berechtigung'] = $stmt->fetchColumn(0);
+      $res = $stmt->fetch(PDO::FETCH_NUM);
+      $_SESSION['berechtigung'] = $res[0];
+      $_SESSION['name'] = $res[1];
     } else {
       $errors[] = 'Passwort ist nicht korrekt!';
     }
@@ -30,7 +36,7 @@ if (isset($_POST['submit'])) {
 }
 
 drawPageHead('Login');
-drawNavbar(isset($_SESSION['username']));
+drawNavbar(isset($_SESSION['username']), $_SESSION['name']);
 drawLoginView(isset($_POST['submit']), $errors, isset($_GET['redirect']) ? $_GET['redirect'] : '.');
 drawFooter();
 drawPageFoot();

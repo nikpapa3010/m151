@@ -3,6 +3,10 @@ session_start();
 
 require_once 'requireAll.inc.php';
 
+if (!isset($_SESSION['name'])) {
+  $_SESSION['name'] = '';
+}
+
 $mietauftraege = [];
 $serviceauftraege = [];
 
@@ -24,7 +28,7 @@ if (isset($_SESSION['username'])) {
 }
 
 drawPageHead('Warenkorb', isset($_SESSION['username']) ? null : 'login.php?redirect=warenkorb.php');
-drawNavbar(isset($_SESSION['username']));
+drawNavbar(isset($_SESSION['username']), $_SESSION['name']);
 drawAuftragslisteView(true, $mietauftraege, $serviceauftraege, true);
 drawFooter();
 drawPageFoot();

@@ -3,6 +3,10 @@ session_start();
 
 require_once 'requireAll.inc.php';
 
+if (!isset($_SESSION['name'])) {
+  $_SESSION['name'] = '';
+}
+
 $redir = null;
 $prioritaeten = [];
 $serviceobjekte = [];
@@ -40,7 +44,7 @@ if (isset($_SESSION['username'])) {
 }
 
 drawPageHead('Service', $redir);
-drawNavbar(isset($_SESSION['username']));
+drawNavbar(isset($_SESSION['username']), $_SESSION['name']);
 drawServiceView($prioritaeten, $serviceobjekte);
 drawFooter();
 drawPageFoot();

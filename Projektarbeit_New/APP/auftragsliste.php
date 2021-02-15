@@ -3,6 +3,10 @@ session_start();
 
 require_once 'requireAll.inc.php';
 
+if (!isset($_SESSION['name'])) {
+  $_SESSION['name'] = '';
+}
+
 $mietauftraege = [];
 $serviceauftraege = [];
 
@@ -29,7 +33,7 @@ if (isset($_SESSION['username'])) {
 }
 
 drawPageHead('Registrieren');
-drawNavbar(isset($_SESSION['username']));
+drawNavbar(isset($_SESSION['username']), $_SESSION['name']);
 drawAuftragslisteView($_SESSION['berechtigung'] > 0, $mietauftraege, $serviceauftraege, false);
 drawFooter();
 drawPageFoot();
