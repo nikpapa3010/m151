@@ -49,6 +49,7 @@ if (isset($_POST['submit'])) {
   }
 
   $pdo = Database::connect();
+  $pdo->beginTransaction();
   $stmt = $pdo->prepare('select BenutzerID from benutzer where email = :em');
   $stmt->execute([':em' => $em]);
   if (count($stmt->fetchAll()) > 0) {
@@ -63,6 +64,7 @@ if (isset($_POST['submit'])) {
     $stmt->execute([':un' => $_SESSION['username']]);
     $_SESSION['berechtigung'] = $stmt->fetchColumn(0);
   }
+  $pdo->commit();
 }
 
 drawPageHead('Registrieren');
