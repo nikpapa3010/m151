@@ -21,23 +21,24 @@ function drawNavbar(bool $loggedin = false, string $username = null) {
           Anmelden
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="">Test</a>
+          <a class="dropdown-item" href="./service.php">Service</a>
+          <a class="dropdown-item" href="./Mietformular.php">Miete</a>
           </div>
           <?php }?>
           <li class="nav-item active">
             <a class="nav-link" href="./kontakt.php">Kontakt</a>
           </li>
         </ul>   
-
-
         <ul class="navbar-nav ml-auto">
           <?php if($loggedin){ ?>
           <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  logged in
+                  <?php echo $username ?>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="">Test</a>
+                  <a class="dropdown-item" href="./Warenkorb.php">Warenkorb</a>
+                  <a class="dropdown-item" href="./Warenkorb.php">Bestellungen</a>
+                  <a class="dropdown-item" href="./Warenkorb.php">Einstellungen</a>
                   </div>
           </li>
           <?php }else{ ?>
