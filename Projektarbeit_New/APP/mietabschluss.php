@@ -10,19 +10,21 @@ if (isset($_SESSION['username']) && isset($_POST['submit'])) {
   $stmt->execute([':em' => $_SESSION['username']]);
   $userid = $stmt->fetchColumn(0);
 
-  $resdat = date_create();
+  $resdat = date_format(date_create(), 'Y-m-d');
   $start = $_SESSION['start'];
   $dauer = $_SESSION['dauer'];
   $menge = 1;
   $objid = $_POST['submit'];
   $status = 1;
 
-  $stmt = $pdo->prepare('insert into Mietauftrag (Reservationsdatum, Startdatum, Dauer, Menge, BenutzerFK, MietobjektFK, StatusFK)' .
-                        'values (:rd, :sd, :dr, :mg, :uid, :mo, :st');
+  $stmt = $pdo->prepare('insert into Mietauftrag (Reservationsdatum, Startdatum, Dauer, Menge, BenutzerFK, MietobjektFK, StatusFK) ' .
+                        'values (:rd, :sd, :dr, :mg, :uid, :mo, :st)');
   $stmt->execute([':rd' => $resdat, ':sd' => $start, ':dr' => $dauer, ':mg' => $menge, ':uid' => $userid, ':mo' => $objid, ':st' => $status]);
+} else {
+  echo "Hat nicht funktioniert";
 }
 
-drawPageHead('Mietauswahl', );
+drawPageHead('Mietauswahl');
 drawNavbar(isset($_SESSION['username']));
 drawMietabschlussView();
 drawFooter();

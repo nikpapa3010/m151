@@ -12,7 +12,7 @@ function drawMietauswahlView($mietobjekte) {
           Altersgruppe: <?php echo $mietobjekt->Altersgruppe; ?><br />
           Geschlecht: <?php echo $mietobjekt->Geschlecht; ?><br />
           Preis: <?php echo $mietobjekt->PreisProTag * $_SESSION['dauer'] ?><br />
-          <button class="btn btn-primary" type="submit" value="<?php echo $mietobjekt->MietobjektID; ?>">bestellen!</button>
+          <button class="btn btn-primary" type="submit" name="submit" value="<?php echo $mietobjekt->MietobjektID; ?>">bestellen!</button>
         </div>
         <?php } ?>
       </form>
