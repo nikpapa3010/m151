@@ -16,9 +16,9 @@ function drawNavbar(bool $loggedin = false, string $username = null) {
           
          
           <?php if($loggedin){ ?>
-        <li class="nav-item dropdown">
-         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Anmelden
+        <li class="nav-item dropdown ">
+         <a class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Anmelden
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="./service.php">Service</a>
@@ -32,7 +32,7 @@ function drawNavbar(bool $loggedin = false, string $username = null) {
         <ul class="navbar-nav ml-auto">
           <?php if($loggedin){ ?>
           <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle" color="#fff" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <?php echo $username ?>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
