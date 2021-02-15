@@ -37,7 +37,7 @@ function drawNavbar(bool $loggedin = false, string $username = null) {
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="./Warenkorb.php">Warenkorb</a>
-                  <a class="dropdown-item" href="./Warenkorb.php">Bestellungen</a>
+                  <a class="dropdown-item" href="./auftragsliste.php">Bestellungen</a>
                   <a class="dropdown-item" href="./Warenkorb.php">Einstellungen</a>
                   </div>
           </li>
