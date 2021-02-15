@@ -13,9 +13,9 @@ function drawNavbar(bool $loggedin = false, string $username = null) {
           <li class="nav-item active">
             <a class="nav-link" href=".">Startseite</a>
           </li>
-
+          
+         
           <?php if($loggedin){ ?>
-            <ul class="navbar-nav">
         <li class="nav-item dropdown">
          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Anmelden
