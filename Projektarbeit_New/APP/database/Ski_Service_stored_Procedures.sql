@@ -36,14 +36,16 @@ create Procedure PMietauftrag
     in sd date,
     in dr int(11),
     in mg int(11),
-    in udi int(11) ,
+    in uid int(11) ,
     in mo int(11),
     in st int(11)
 ) 
 Begin
-
+				
 	insert into mietauftrag(Reservationsdatum, Startdatum, Dauer, Menge, BenutzerFK, MietobjektFK, StatusFK)
-				values(rd, sd, dr, mg, udi, mo, st);
-
+				values(rd, sd, dr, mg, uid, mo, st);
+				
 END $$
 Delimiter ;
+call PMietauftrag('2021-02-20', current_date(), 7, 1, 1, 2, 3);
+select * from Mietauftrag;

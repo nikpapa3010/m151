@@ -169,3 +169,5 @@ values	(1, "Kleiner Service", 40.0),
         (4, "Bindungen montieren und einstellen", 20.0),
         (5, "Fell zuschneiden", 20.0),
         (6, "Heisswachsen", 20.0);
+
+
