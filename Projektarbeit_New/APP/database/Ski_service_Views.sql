@@ -56,3 +56,12 @@ create view Mietobjekte as
 		   mietobjekttyp.Bezeichnung as Objekttyp, ObjekttypID
     from mietobjekt
     inner join mietobjekttyp on ObjekttypFK = ObjekttypID;
+    
+    
+
+-- Benutzer und Berechtigung --
+create view Benutzer_Berechtigung as
+	select Passwort, Berechtigung from Benutzer
+    inner join rang on RangFK = rangID;
+    
+select * from Benutzer_Berechtigung;
