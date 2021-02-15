@@ -27,5 +27,23 @@ select * from benutzer;
 select * from rang;
 
 
+-- insert Mietauftrag
 
+DELIMITER $$
+create Procedure PMietauftrag
+(
+	in rd date,
+    in sd date,
+    in dr int(11),
+    in mg int(11),
+    in udi int(11) ,
+    in mo int(11),
+    in st int(11)
+) 
+Begin
 
+	insert into mietauftrag(Reservationsdatum, Startdatum, Dauer, Menge, BenutzerFK, MietobjektFK, StatusFK)
+				values(rd, sd, dr, mg, udi, mo, st);
+
+END $$
+Delimiter ;
