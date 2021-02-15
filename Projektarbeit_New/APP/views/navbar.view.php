@@ -22,7 +22,7 @@ function drawNavbar(bool $loggedin = false, string $username = null) {
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="./service.php">Service</a>
-          <a class="dropdown-item" href="./Mietformular.php">Miete</a>
+          <a class="dropdown-item" href="./mietformular.php">Miete</a>
           </div>
           <?php }?>
           <li class="nav-item active">
@@ -32,14 +32,15 @@ function drawNavbar(bool $loggedin = false, string $username = null) {
         <ul class="navbar-nav ml-auto">
           <?php if($loggedin){ ?>
           <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" color="#fff" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <?php echo htmlspecialchars($_SESSION['name']) ?>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="./Warenkorb.php">Warenkorb</a>
-                  <a class="dropdown-item" href="./auftragsliste.php">Bestellungen</a>
-                  <a class="dropdown-item" href="./Warenkorb.php">Einstellungen</a>
-                  </div>
+            <a class="nav-link dropdown-toggle" color="#fff" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <?php echo htmlspecialchars($_SESSION['name']) ?>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="./warenkorb.php">Warenkorb</a>
+              <a class="dropdown-item" href="./auftragsliste.php">Bestellungen</a>
+              <a class="dropdown-item" href=".">Einstellungen</a>
+              <a class="dropdown-item" href="./logout.php">Logout</a>
+            </div>
           </li>
           <?php }else{ ?>
           <li class="nav-item active">

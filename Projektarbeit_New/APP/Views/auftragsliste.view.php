@@ -29,7 +29,10 @@ function drawAuftragslisteView(bool $showUser, array $mietauftraege, array $serv
               <td class="d-none d-sm-table-cell"><?php echo $mietauftrag->EndDatum; ?></td>
               <td class="d-<?php if ($showUser) { ?>none d-sm-<?php } ?>table-cell"><?php echo $mietauftrag->Preis; ?></td>
               <td class="d-none d-lg-table-cell"><?php echo $mietauftrag->Status; ?></td>
-              <td class="d-table-cell"><a href="edit.php"><button class="btn btn-primary">&#x270F;</button></a></td>
+              <td class="d-table-cell">
+                <a href="edit.php"><button class="btn btn-primary">&#x270F;</button></a>
+                <a href="delete.php"><button class="btn btn-danger">&#x232B;</button></a>
+              </td>
             </tr>
           <?php } ?>
         </tbody>    
@@ -59,7 +62,10 @@ function drawAuftragslisteView(bool $showUser, array $mietauftraege, array $serv
               <td class="d-none d-lg-table-cell"><?php echo $serviceauftrag->Prioritaet ?></td>
               <td class="d-<?php if ($showUser) { ?>none d-sm-<?php } ?>table-cell"><?php echo $serviceauftrag->Preis ?></td>
               <td class="d-none d-lg-table-cell"><?php echo $serviceauftrag->Status ?></td>
-              <td class="d-table-cell"><a href="edit.php"><button class="btn btn-primary">&#x270F;</button></a></td>
+              <td class="d-table-cell">
+                <a href="edit.php"><button class="btn btn-primary">&#x270F;</button></a>
+                <a href="delete.php"><button class="btn btn-danger">&#x232B;</button></a>
+              </td>
             </tr>
           <?php } ?>
         </tbody>    
