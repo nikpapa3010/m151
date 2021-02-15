@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
   if ($pwh = $stmt->fetchColumn(0)) {
     if (password_verify($pw, $pwh)) {
       $_SESSION['username'] = $em;
-      $stmt = $pdo->prepare('select Berechtigung, concat(Vorname, " ", Vorname) as Name from rang inner join benutzer on RangFK = RangID where Email = :un');
+      $stmt = $pdo->prepare('select Berechtigung, concat(Vorname, " ", Nachname) as Name from rang inner join benutzer on RangFK = RangID where Email = :un');
       $stmt->execute([':un' => $_SESSION['username']]);
       $res = $stmt->fetch(PDO::FETCH_NUM);
       $_SESSION['berechtigung'] = $res[0];
