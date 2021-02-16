@@ -72,12 +72,12 @@ function drawAuftragslisteView(bool $showUser, array $mietauftraege, array $serv
       </table>
       <?php if ($warenkorb) { ?>
         <div class="row">
-          <div class="col-sm mb-2 mb-sm-0">
+          <div class="col-sm mb-2 mb-sm-0"><a href="">
             <button class="btn btn-danger">Alles Löschen!</button>
-          </div>
-          <div class="col-sm text-sm-right">
+          </a></div>
+          <div class="col-sm text-sm-right"><a href="abschliessen.php">
             <button class="btn btn-success">Bestellung abschliessen!</button>
-          </div>
+          </a></div>
         </div>
       <?php } ?>
     </div>

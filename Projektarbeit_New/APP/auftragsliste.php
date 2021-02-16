@@ -29,7 +29,7 @@ if (isset($_SESSION['username'])) {
   $stmt = $pdo->prepare($sql);
   $stmt->execute([':em' => $_SESSION['username']]);
   $stmt->setFetchMode(PDO::FETCH_CLASS, 'Benutzer_Serviceauftrag');
-  $mietauftraege = $stmt->fetchAll();
+  $serviceauftraege = $stmt->fetchAll();
 }
 
 drawPageHead('Registrieren');
