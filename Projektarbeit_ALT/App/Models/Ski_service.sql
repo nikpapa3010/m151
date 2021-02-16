@@ -149,7 +149,7 @@ grant all on ski_service.* to `SkiAdmin`@`%`;
 
 drop user if exists `SkiMitarbeiter`@`%`;
 create user `SkiMitarbeiter`@`%` identified by "SkiMitarbeiter123$";
-grant select, update, insert, delete on ski_service.* to `SkiMitarbeiter`@`%`;
+grant select on, update, insert, delete on ski_service.* to `SkiMitarbeiter`@`%`;
 
 drop user if exists `SkiKunde`@`%`;
 create user `SkiKunde`@`%`;
