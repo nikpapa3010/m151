@@ -19,7 +19,7 @@ if (isset($_SESSION['username'])) {
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':em' => $_SESSION['username']]);
     $pdo->commit();
-    print_r($stmt->errorInfo());
+    $redir = 'auftragsliste.php';
   }
 } else {
   $redir = 'login.php?redirect=warenkorb.php';

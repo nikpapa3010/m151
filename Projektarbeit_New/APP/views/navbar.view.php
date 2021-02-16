@@ -2,7 +2,7 @@
 function drawNavbar(bool $loggedin = false, string $username = null) {
 ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Alpine_skiing_pictogram.svg/1200px-Alpine_skiing_pictogram.svg.png" width="50" height="50" class="d-inline-block align-top" alt="" >
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Alpine_skiing_pictogram.svg" width="50" height="50" class="d-inline-block align-top" alt="" >
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -33,7 +33,7 @@ function drawNavbar(bool $loggedin = false, string $username = null) {
           <?php if($loggedin){ ?>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" color="#fff" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <?php echo htmlspecialchars($_SESSION['name']) ?>
+            <?php echo htmlspecialchars($username) ?>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="./warenkorb.php">Warenkorb</a>

@@ -27,7 +27,7 @@ function drawLoginView(bool $abgesendet, array $errors, string $redirect = '.') 
           <input type="text" class="form-control" name="username" id="username" placeholder="Email" required>
         </div>
         <div class="form-group">
-          <label for="password">Password</label><br>
+          <label for="password">Passwort</label><br>
           <input type="password" class="form-control" name="password" id="password" placeholder="Passwort" required>
         </div>
         <div class="row">

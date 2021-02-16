@@ -7,6 +7,8 @@ if (!isset($_SESSION['name'])) {
   $_SESSION['name'] = '';
 }
 
+$redir = null;
+
 if (isset($_SESSION['username']) && isset($_POST['submit'])) {
   $pdo = Database::connect($_SESSION['berechtigung']);
   $pdo->beginTransaction();
@@ -26,12 +28,13 @@ if (isset($_SESSION['username']) && isset($_POST['submit'])) {
                         'values (:rd, :sd, :dr, :mg, :uid, :mo, :st)');
   $stmt->execute([':rd' => $resdat, ':sd' => $start, ':dr' => $dauer, ':mg' => $menge, ':uid' => $userid, ':mo' => $objid, ':st' => $status]);
   $pdo->commit();
+  $redir = 'warenkorb.php';
 } else {
   echo "Hat nicht funktioniert";
 }
 
-drawPageHead('Mietauswahl');
-drawNavbar(isset($_SESSION['username']), );
+drawPageHead('Mietauswahl', $redir, 3);
+drawNavbar(isset($_SESSION['username']), $_SESSION['name']);
 drawMietabschlussView();
 drawFooter();
 drawPageFoot();
