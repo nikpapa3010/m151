@@ -16,17 +16,16 @@ if (isset($_POST['submit'])) {
   $em = $_POST['username'];
   $pw = $_POST['password'];
   $pdo = Database::connect();
-  $stmt = $pdo->prepare('select Passwort from benutzer where Email = :em');
+  $stmt = $pdo->prepare('select * from Benutzer_Berechtigung where Email = :em');
   $stmt->execute([':em' => $em]);
+  $stmt->setFetchMode(PDO::FETCH_CLASS, 'Benutzer_Berechtigung');
   
-  if ($pwh = $stmt->fetchColumn(0)) {
+  if ($benber = $stmt->fetch()) {
+    $pwh = $benber->Passwort;
     if (password_verify($pw, $pwh)) {
       $_SESSION['username'] = $em;
-      $stmt = $pdo->prepare('select Berechtigung, concat(Vorname, " ", Nachname) as Name from rang inner join benutzer on RangFK = RangID where Email = :un');
-      $stmt->execute([':un' => $_SESSION['username']]);
-      $res = $stmt->fetch(PDO::FETCH_NUM);
-      $_SESSION['berechtigung'] = $res[0];
-      $_SESSION['name'] = $res[1];
+      $_SESSION['berechtigung'] = $benber->Berechtigung;
+      $_SESSION['name'] = $benber->Name;
     } else {
       $errors[] = 'Passwort ist nicht korrekt!';
     }

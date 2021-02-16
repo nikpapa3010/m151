@@ -1,5 +1,6 @@
 <?php
 // Model
+require_once "./model/Benutzer_Berechtigung.class.php";
 require_once "./model/Benutzer_Mietauftrag.class.php";
 require_once "./model/Benutzer_Serviceauftrag.class.php";
 require_once "./model/Benutzer.class.php";

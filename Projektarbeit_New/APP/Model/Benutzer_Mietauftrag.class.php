@@ -10,5 +10,6 @@ class Benutzer_Mietauftrag {
   public $Preis = 0.0;
   public $anzInView = false;
   public $anzInWk = false;
+  public $bearbeitbar = false;
 }
 ?>

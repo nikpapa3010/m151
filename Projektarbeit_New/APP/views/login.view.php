@@ -24,7 +24,9 @@ function drawLoginView(bool $abgesendet, array $errors, string $redirect = '.') 
       <form action='<?php echo $_SERVER["PHP_SELF"]; if (isset($_GET['redirect'])) echo '?redirect=' . $_GET['redirect']; ?>' method="POST">
         <div class="form-group">
           <label for="username">Email</label><br>
-          <input type="text" class="form-control" name="username" id="username" placeholder="Email" required>
+          <input type="text" class="form-control" name="username" id="username" placeholder="Email"<?php
+            if (isset($_POST['username'])) { echo ' value="' . $_POST['username'] . '"'; }
+          ?> required>
         </div>
         <div class="form-group">
           <label for="password">Passwort</label><br>

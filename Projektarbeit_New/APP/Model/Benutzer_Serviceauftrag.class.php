@@ -10,5 +10,6 @@ class Benutzer_Serviceauftrag {
   public $EndDatum = '';
   public $anzInView = false;
   public $anzInWk = false;
+  public $bearbeitbar = false;
 }
 ?>

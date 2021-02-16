@@ -1,13 +1,12 @@
 use ski_service;
 
-
-
 --------------------- Views -------------------------
 -- Alle benutzter mit Mieatauftrag
+drop view if exists Benutzer_Mietauftrag;
 create view Benutzer_Mietauftrag as
 	select  concat(benutzer.Nachname, " ", benutzer.Vorname) as `Name`, benutzer.Email, mietobjekttyp.Bezeichnung as `Miete`,
 			mietstatus.Bezeichnung as `Status`, Reservationsdatum, Startdatum, adddate(Startdatum, interval Dauer day) as EndDatum,
-            mietobjekt.PreisProTag * mietauftrag.Dauer * mietauftrag.Menge as Preis, mietstatus.AnzeigenInView as anzInView, mietstatus.AnzeigenInWarenkorb as anzInWk
+            mietobjekt.PreisProTag * mietauftrag.Dauer * mietauftrag.Menge as Preis, mietstatus.AnzeigenInView as anzInView, mietstatus.AnzeigenInWarenkorb as anzInWk, bearbeitbar
     from mietauftrag 
     inner join benutzer on benutzer.BenutzerID = mietauftrag.BenutzerFK
     inner join mietobjekt on mietobjekt.MietobjektID = mietauftrag.MietobjektFK
@@ -17,10 +16,11 @@ create view Benutzer_Mietauftrag as
 
 
 -- Alle benutzter mit Serviceauftrag
+drop view if exists Benutzer_Serviceauftrag;
 create view Benutzer_Serviceauftrag as
 	select  concat(benutzer.Nachname, " ", benutzer.Vorname) as `Name`, benutzer.Email, Serviceobjekt.Bezeichnung `Service`, 
     serviceobjekt.Grundpreis + prioritaet.Aufschlag as `Preis`, servicestatus.Bezeichnung as `Status`, prioritaet.Bezeichnung as `Prioritaet`,
-    Startdatum, adddate(Startdatum, interval Dauer day) as EndDatum, servicestatus.AnzeigenInView as anzInView, servicestatus.AnzeigenInWarenkorb as anzInWk
+    Startdatum, adddate(Startdatum, interval Dauer day) as EndDatum, servicestatus.AnzeigenInView as anzInView, servicestatus.AnzeigenInWarenkorb as anzInWk, bearbeitbar
     from serviceauftrag 
     inner join benutzer on benutzer.BenutzerID = serviceauftrag.BenutzerFK
     inner join serviceobjekt on serviceobjekt.ServiceobjektID = serviceauftrag.ServiceobjektFK
@@ -29,7 +29,7 @@ create view Benutzer_Serviceauftrag as
 
 
 -- Alle Mietaufträge ---
-
+drop view if exists Mietauftraege;
 create view Mietauftraege as
 	select mietobjekttyp.Bezeichnung as 'Typ', mietauftrag.Startdatum, mietauftrag.Reservationsdatum, mietauftrag.Dauer,
 		   mietstatus.Bezeichnung as 'Status'
@@ -41,6 +41,7 @@ create view Mietauftraege as
     
 
 -- Alle Services -- 
+drop view if exists Services;
 create view Services as 
 	select serviceobjekt.Bezeichnung as `Service`, serviceobjekt.Grundpreis, servicestatus.Bezeichnung as `Status`,
 		   prioritaet.Bezeichnung as `Prioritaet`, serviceauftrag.Startdatum, prioritaet.Dauer
@@ -51,6 +52,7 @@ create view Services as
 
 
 -- Alle Mietobjekte --
+drop view if exists Mietobjekte;
 create view Mietobjekte as
 	select MietobjektID, KoerpergroesseVon, KoerpergroesseBis, Altersgruppe, Geschlecht, PreisProTag, BildLink,
 		   mietobjekttyp.Bezeichnung as Objekttyp, ObjekttypID
@@ -60,8 +62,7 @@ create view Mietobjekte as
     
 
 -- Benutzer und Berechtigung --
+drop view if exists Benutzer_Berechtigung;
 create view Benutzer_Berechtigung as
-	select Passwort, Berechtigung from Benutzer
+	select Passwort, Berechtigung, Email, concat(Vorname, " ", Nachname) as `Name` from Benutzer
     inner join rang on RangFK = rangID;
-    
-select * from Benutzer_Berechtigung;
