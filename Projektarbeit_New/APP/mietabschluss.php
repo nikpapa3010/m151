@@ -24,8 +24,7 @@ if (isset($_SESSION['username']) && isset($_POST['submit'])) {
   $objid = $_POST['submit'];
   $status = 1;
 
-  $stmt = $pdo->prepare('insert into Mietauftrag (Reservationsdatum, Startdatum, Dauer, Menge, BenutzerFK, MietobjektFK, StatusFK) ' .
-                        'values (:rd, :sd, :dr, :mg, :uid, :mo, :st)');
+  $stmt = $pdo->prepare('call PMietauftrag(:rd, :sd, :dr, :mg, :uid, :mo, :st)');
   $stmt->execute([':rd' => $resdat, ':sd' => $start, ':dr' => $dauer, ':mg' => $menge, ':uid' => $userid, ':mo' => $objid, ':st' => $status]);
   $pdo->commit();
   $redir = 'warenkorb.php';

@@ -34,8 +34,8 @@ require_once "./Views/mietformular.view.php";
 require_once "./views/navbar.view.php";
 require_once "./views/pagefoot.view.php";
 require_once "./views/pagehead.view.php";
+require_once "./Views/profileOptions.View.php";
 require_once "./views/registrieren.view.php";
 require_once "./Views/service.view.php";
-require_once "./Views/Profile_Options.View.php";
 
 ?>

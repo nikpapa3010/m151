@@ -61,13 +61,15 @@ if (isset($_POST['submit'])) {
   }
   
   if (empty($errors)) {
-    $stmt = $pdo->prepare('insert into benutzer (Vorname,Nachname,Passwort,Telefon,Email,RangFK) values (:vn,:nn,:pw,:tl,:em,1);');
+    $stmt = $pdo->prepare('call Createuser(:vn,:nn,:pw,:tl,:em);');
     $stmt->execute([':vn' => $vn, ':nn' => $nn, ':pw' => password_hash($pw, PASSWORD_DEFAULT), ':tl' => $tl, ':em' => $em]);
     $_SESSION['username'] = $em;
-    $stmt = $pdo->prepare('select Berechtigung from rang inner join benutzer on RangFK = RangID where Email = :un');
-    $stmt->execute([':un' => $_SESSION['username']]);
-    $_SESSION['berechtigung'] = $stmt->fetchColumn(0);
-    $_SESSION['name'] = $vn . " " . $nn;
+    $stmt = $pdo->prepare('select * from Benutzer_Berechtigung where Email = :em');
+    $stmt->execute([':em' => $em]);
+    $stmt->setFetchMode(PDO::FETCH_CLASS, 'Benutzer_Berechtigung');
+    $benber = $stmt->fetch();
+    $_SESSION['berechtigung'] = $benber->Berechtigung;
+    $_SESSION['name'] = $benber->Name;
   }
   $pdo->commit();
 }

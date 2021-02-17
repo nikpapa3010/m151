@@ -1,6 +1,9 @@
 
 <?php function drawProfileOptionsView() { ?>
-<form action='<?php echo $_SERVER["PHP_SELF"]; if (isset($_GET['redirect'])) echo '?redirect=' . $_GET['redirect']; ?>' method="POST">
+    <div class="transbox">
+      <h1>Profiloptionen</h1>
+
+      <form action='<?php echo $_SERVER["PHP_SELF"]; if (isset($_GET['redirect'])) echo '?redirect=' . $_GET['redirect']; ?>' method="POST">
         <div class="form-group row">
           <div class="col-md">
             <label for="Vorname">Vorname</label>

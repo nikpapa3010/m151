@@ -166,7 +166,7 @@ insert into Serviceobjekt (ServiceobjektID, Bezeichnung, Grundpreis)
 values	(1, "Kleiner Service", 40.0),
 		(2, "Grosser Service", 60.0),
         (3, "Rennski-Service", 150.0),
-        (4, "Bindungen montieren und einstellen", 20.0),
+        (4, "Bindungen montieren", 20.0),
         (5, "Fell zuschneiden", 20.0),
         (6, "Heisswachsen", 20.0);
 
