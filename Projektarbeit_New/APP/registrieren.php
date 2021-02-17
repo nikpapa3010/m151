@@ -16,7 +16,7 @@ $tl = '';
 $pw = '';
 $pwwh = '';
 
-if (isset($_SESSION['username'])) { ?>
+if (isset($_SESSION['username']) && $_SESSION['berechtigung'] > 0) { ?>
   <meta http-equiv="refresh" content="0; url='.'" />
 <?php }
 
