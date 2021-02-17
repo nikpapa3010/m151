@@ -42,10 +42,10 @@ create Procedure PMietauftrag
 ) 
 Begin
 				
-	insert into mietauftrag(Reservationsdatum, Startdatum, Dauer, Menge, BenutzerFK, MietobjektFK, StatusFK)
-				values(rd, sd, dr, mg, uid, mo, st);
+					insert into Mietauftrag (Reservationsdatum, Startdatum, Dauer, Menge, BenutzerFK, MietobjektFK, StatusFK) 
+                        values (rd, sd, dr, mg, uid, mo, st);
 				
 END $$
 Delimiter ;
-call PMietauftrag('2021-02-20', current_date(), 7, 1, 1, 2, 3);
+call PMietauftrag('2021-02-20', '2021-02-17', 7, 1, (select benutzer.BenutzerID from benutzer where BenutzerID = 1), (select mietobjekt.MietobjektID from mietobjekt where MietobjektID = 1), (select mietstatus.StatusID from mietstatus where StatusID = 1));
 select * from Mietauftrag;
