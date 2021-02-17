@@ -15,12 +15,12 @@ CREATE PROCEDURE Createuser
 BEGIN
                 
 	insert into benutzer(Vorname, Nachname, Passwort, Telefon, Email, RangFK) 
-				 values(vn, nn, ps, tl, em,(select RangID from rang where rangID = 1 ));
+	values (vn, nn, ps, tl, em, 1);
 	
 END $$
 Delimiter ;
 
-call Createuser('Peter','Müller','oops','','Peter@gmail.com');
+call Createuser('Peter','Müller','oops',null,'Peter@gmail.com');
 
 
 select * from benutzer;
@@ -42,10 +42,10 @@ create Procedure PMietauftrag
 ) 
 Begin
 				
-					insert into Mietauftrag (Reservationsdatum, Startdatum, Dauer, Menge, BenutzerFK, MietobjektFK, StatusFK) 
-                        values (rd, sd, dr, mg, uid, mo, st);
+	insert into Mietauftrag (Reservationsdatum, Startdatum, Dauer, Menge, BenutzerFK, MietobjektFK, StatusFK) 
+	values (rd, sd, dr, mg, uid, mo, st);
 				
 END $$
 Delimiter ;
-call PMietauftrag('2021-02-20', '2021-02-17', 7, 1, (select benutzer.BenutzerID from benutzer where BenutzerID = 1), (select mietobjekt.MietobjektID from mietobjekt where MietobjektID = 1), (select mietstatus.StatusID from mietstatus where StatusID = 1));
+call PMietauftrag('2021-02-20', '2021-02-17', 7, 1, 1, 1, 1);
 select * from Mietauftrag;

@@ -30,7 +30,7 @@ if (isset($_SESSION['username']) && isset($_POST['submit'])) {
   $pdo->commit();
   $redir = 'warenkorb.php';
 } else {
-  echo "Hat nicht funktioniert";
+  $redir = 'mietformular.php';
 }
 
 drawPageHead('Mietauswahl', $redir, 3);
