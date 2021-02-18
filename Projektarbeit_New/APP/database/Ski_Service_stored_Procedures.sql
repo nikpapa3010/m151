@@ -35,7 +35,7 @@ create Procedure PMietauftrag
 Begin
 				
 	insert into Mietauftrag (Reservationsdatum, Startdatum, Dauer, Menge, BenutzerFK, MietobjektFK, StatusFK) 
-	values (rd, sd, dr, mg, (select BenutzerID from benutzer where Email =  bem), (select mietobjekt.MietobjektID from mietobjekt where MietobjektID = mo),  (select mietstatus.StatusID from mietstatus where StatusID = st));
+	values (rd, sd, dr, mg, (select BenutzerID from benutzer where Email =  bem), mo, st );
 				
 END $$
 Delimiter ;
