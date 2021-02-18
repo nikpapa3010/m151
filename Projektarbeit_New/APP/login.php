@@ -8,9 +8,24 @@ if (!isset($_SESSION['name'])) {
 }
 
 $errors = [];
-if (isset($_SESSION['username']) && !isset($_POST['submit'])) { ?>
-  <meta http-equiv="refresh" content="0; url='.'" />
-<?php }
+$redirect = null;
+$redirtime = 0;
+
+if (isset($_SESSION['username']) && !isset($_POST['submit'])) {
+  $pdo = Database::connect();
+  $stmt = $pdo->prepare('select * from Benutzer_Berechtigung where Email = :em');
+  $stmt->execute([':em' => $_SESSION['username']]);
+  $stmt->setFetchMode(PDO::FETCH_CLASS, 'Benutzer_Berechtigung');
+  
+  if ($benber = $stmt->fetch()) {
+    $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : '.';
+    $_SESSION['username'] = $benber->Email;
+    $_SESSION['berechtigung'] = $benber->Berechtigung;
+    $_SESSION['name'] = $benber->Name;
+  } else {
+    $errors[] = 'Benutzer existiert nicht!';
+  }
+}
 
 if (isset($_POST['submit'])) {
   $em = $_POST['username'];
@@ -32,11 +47,16 @@ if (isset($_POST['submit'])) {
   } else {
     $errors[] = 'Benutzer existiert nicht!';
   }
+
+  if (empty($errors)) {
+    $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : '.';
+    $redirtime = 3;
+  }
 }
 
-drawPageHead('Login');
+drawPageHead('Login', $redirect, $redirtime);
 drawNavbar(isset($_SESSION['username']), $_SESSION['name']);
-drawLoginView(isset($_POST['submit']), $errors, isset($_GET['redirect']) ? $_GET['redirect'] : '.');
+drawLoginView(isset($_POST['submit']), $errors);
 drawFooter();
 drawPageFoot();
 ?>

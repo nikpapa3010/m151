@@ -39,7 +39,7 @@ function drawPageHead(string $title, string $redirect = null, int $redirsec = 0)
     {
       margin: auto;
       background-color: #ffffffe1;
-      border: 1px solid black;
+      /* border: 1px solid black; */
       padding: 10px;
     }
 

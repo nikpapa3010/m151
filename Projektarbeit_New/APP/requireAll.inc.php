@@ -1,43 +1,26 @@
 <?php
 // Model
-require_once "./model/Benutzer_Berechtigung.class.php";
-require_once "./model/Benutzer_Mietauftrag.class.php";
-require_once "./model/Benutzer_Rang.class.php";
-require_once "./model/Benutzer_Serviceauftrag.class.php";
-require_once "./model/Benutzer.class.php";
-require_once "./model/Mietauftraege.class.php";
-require_once "./model/Mietauftrag.class.php";
-require_once "./model/Mietobjekt.class.php";
-require_once "./model/Mietobjekte.class.php";
-require_once "./model/Mietobjekttyp.class.php";
-require_once "./model/Mietstatus.class.php";
-require_once "./model/Prioritaet.class.php";
-require_once "./model/Rang.class.php";
-require_once "./model/Serviceauftrag.class.php";
-require_once "./model/Serviceobjekt.class.php";
-require_once "./model/Services.class.php";
-require_once "./model/Servicestatus.class.php";
+foreach (scandir('./model/') as $file) {
+  $path = './model/' . $file;
+  if (is_file($path)) {
+    require_once $path;
+  }
+}
 
 // Repository
-require_once "./repository/Database.class.php";
-require_once "./repository/GeneralVariables.inc.php";
+foreach (scandir('./repository/') as $file) {
+  $path = './repository/' . $file;
+  if (is_file($path)) {
+    require_once $path;
+  }
+}
 
 // Views
-require_once "./views/abschliessen.view.php";
-require_once "./views/auftragsliste.view.php";
-require_once "./views/benutzerliste.view.php";
-require_once "./views/footer.view.php";
-require_once "./views/kontakt.view.php";
-require_once "./views/landingpage.view.php";
-require_once "./views/login.view.php";
-require_once "./Views/mietabschluss.view.php";
-require_once "./Views/mietauswahl.view.php";
-require_once "./Views/mietformular.view.php";
-require_once "./views/navbar.view.php";
-require_once "./views/pagefoot.view.php";
-require_once "./views/pagehead.view.php";
-require_once "./Views/profileOptions.View.php";
-require_once "./views/registrieren.view.php";
-require_once "./Views/service.view.php";
+foreach (scandir('./views/') as $file) {
+  $path = './views/' . $file;
+  if (is_file($path)) {
+    require_once $path;
+  }
+}
 
 ?>

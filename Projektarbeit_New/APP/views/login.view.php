@@ -1,5 +1,5 @@
 <?php
-function drawLoginView(bool $abgesendet, array $errors, string $redirect = '.') {
+function drawLoginView(bool $abgesendet, array $errors) {
 ?>
     <div class="transbox">
       <h1>Anmeldung</h1>
@@ -16,7 +16,6 @@ function drawLoginView(bool $abgesendet, array $errors, string $redirect = '.') 
           <ul class='alert alert-success'>
           <li>Anmeldung erfolgreich!</li>
           <li>Sie werden in Kürze weitergeleitet.</li>
-          <meta http-equiv="Refresh" content="3; url='<?php echo $redirect; ?>'" />
           </ul>
         <?php }
       } ?>

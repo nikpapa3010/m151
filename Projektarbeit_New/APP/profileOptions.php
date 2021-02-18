@@ -101,7 +101,11 @@ if (isset($_SESSION['username'])) {
       }
 
       if (empty($errors)) {
-        $redir = 'benutzerliste.php';
+        if (is_numeric($_POST['submit'])) {
+          $redir = 'login.php?redirect=benutzerliste.php';
+        } else {
+          $redir = 'login.php?redirect=profileOptions.php';
+        }
       }
     }
   }

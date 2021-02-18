@@ -17,6 +17,7 @@ if (isset($_SESSION['username'])) {
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_CLASS, 'Benutzer_Rang');
     $users = $stmt->fetchAll();
+    // var_dump($stmt->errorInfo());
   } else {
     $redir = 'profileOptions.php';
   }

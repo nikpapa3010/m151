@@ -25,12 +25,13 @@ grant All on ski_service.mietauftrag to `SkiUser`;
 grant execute on procedure ski_service.Createuser to `SkiUser`;
 grant execute on procedure ski_service.PMietauftrag to `SkiUser`;
 -- View privileges --
+grant select on ski_service.benutzer_berechtigung to `SkiUser`;
 grant select on ski_service.benutzer_mietauftrag to `SkiUser`;
+grant select on ski_service.benutzer_rang to `SkiUser`;
 grant select on ski_service.benutzer_serviceauftrag to `SkiUser`;
 grant select on ski_service.mietauftraege to `SkiUser`;
 grant select on ski_service.services to `SkiUser`;
 grant select on ski_service.mietobjekte to `SkiUser`;
-grant select on ski_service.benutzer_berechtigung to `SkiUser`;
 
 
 -- Access to Mitarbeiter -- 
@@ -51,9 +52,10 @@ grant all on ski_service.mietauftrag to `SkiMitarbeiter`;
 grant all on procedure ski_service.Createuser to `SkiMitarbeiter`;
 grant all on procedure ski_service.PMietauftrag to `SkiMitarbeiter`;
 -- View privileges --
+grant all on ski_service.benutzer_berechtigung to `SkiMitarbeiter`;
 grant all on ski_service.benutzer_mietauftrag to `SkiMitarbeiter`;
+grant all on ski_service.benutzer_rang to `SkiMitarbeiter`;
 grant all on ski_service.benutzer_serviceauftrag to `SkiMitarbeiter`;
 grant all on ski_service.mietauftraege to `SkiMitarbeiter`;
 grant all on ski_service.services to `SkiMitarbeiter`;
 grant all on ski_service.mietobjekte to `SkiMitarbeiter`;
-grant all on ski_service.benutzer_berechtigung to `SkiMitarbeiter`;
