@@ -28,14 +28,17 @@ create Procedure PMietauftrag
     in sd date,
     in dr int(11),
     in mg int(11),
-    in uid int(11) ,
+    in bem varchar(50) ,
     in mo int(11),
     in st int(11)
 ) 
 Begin
 				
 	insert into Mietauftrag (Reservationsdatum, Startdatum, Dauer, Menge, BenutzerFK, MietobjektFK, StatusFK) 
-	values (rd, sd, dr, mg, uid, mo, st);
+	values (rd, sd, dr, mg, (select BenutzerID from benutzer where Email =  bem), (select mietobjekt.MietobjektID from mietobjekt where MietobjektID = mo),  (select mietstatus.StatusID from mietstatus where StatusID = st));
 				
 END $$
 Delimiter ;
+
+call PMietauftrag('2021-02-20', '2021-02-17', 7, 1, "nikolaos.papadopoulos@student.ibz.ch", 1, 1);
+
