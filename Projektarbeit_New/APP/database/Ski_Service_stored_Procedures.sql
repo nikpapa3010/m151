@@ -39,6 +39,3 @@ Begin
 				
 END $$
 Delimiter ;
-
-call PMietauftrag('2021-02-20', '2021-02-17', 7, 1, "nikolaos.papadopoulos@student.ibz.ch", 1, 1);
-	select * from Mietauftrag;
