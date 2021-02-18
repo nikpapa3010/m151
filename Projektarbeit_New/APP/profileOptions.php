@@ -95,6 +95,10 @@ if (isset($_SESSION['username'])) {
           $stmt->execute($parArray);
         }
       }
+
+      if (empty($errors)) {
+        $redir = 'benutzerliste.php';
+      }
     }
   }
 

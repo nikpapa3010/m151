@@ -39,6 +39,9 @@ function drawNavbar(bool $loggedin = false, string $username = null) {
               <a class="dropdown-item" href="./warenkorb.php">Warenkorb</a>
               <a class="dropdown-item" href="./auftragsliste.php">Bestellungen</a>
               <a class="dropdown-item" href="./profileOptions.php">Einstellungen</a>
+              <?php if ($_SESSION['berechtigung'] > 0) { ?>
+              <a class="dropdown-item" href="./benutzerliste.php">Benutzerliste</a>
+              <?php } ?>
               <a class="dropdown-item" href="./logout.php">Logout</a>
             </div>
           </li>

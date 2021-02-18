@@ -66,3 +66,9 @@ drop view if exists Benutzer_Berechtigung;
 create view Benutzer_Berechtigung as
 	select Passwort, Berechtigung, Email, concat(Vorname, " ", Nachname) as `Name` from Benutzer
     inner join rang on RangFK = rangID;
+
+-- Benutzer und Rang
+drop view if exists Benutzer_Rang;
+create view Benutzer_Rang as
+	select BenutzerID, concat(Vorname, " ", Nachname) as `Name`, Email, Telefon, rang.Bezeichnung as `Rang` from Benutzer
+    inner join rang on RangFK = rangID;
