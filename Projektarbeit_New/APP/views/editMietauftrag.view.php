@@ -1,5 +1,5 @@
 <?php
-function drawEditMietauftragView() {
+function drawEditMietauftragView(bool $warenkorb) {
   ?>
   <?php
 }

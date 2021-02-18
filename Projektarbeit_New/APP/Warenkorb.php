@@ -27,6 +27,8 @@ if (isset($_SESSION['username'])) {
   $serviceauftraege = $stmt->fetchAll();
 }
 
+$_SESSION['isWarenkorb'] = true;
+
 drawPageHead('Warenkorb', isset($_SESSION['username']) ? null : 'login.php?redirect=warenkorb.php');
 drawNavbar(isset($_SESSION['username']), $_SESSION['name']);
 drawAuftragslisteView(false, $mietauftraege, $serviceauftraege, true);

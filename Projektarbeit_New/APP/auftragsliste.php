@@ -10,6 +10,7 @@ if (!isset($_SESSION['name'])) {
 $mietauftraege = [];
 $serviceauftraege = [];
 $redir = null;
+$_SESSION['isWarenkorb'] = false;
 
 if (isset($_SESSION['username'])) {
   $pdo = Database::connect($_SESSION['berechtigung']);
