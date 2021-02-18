@@ -3,11 +3,12 @@ session_start();
 
 require_once 'requireAll.inc.php';
 
-$redir = null;
-
 if (!isset($_SESSION['name'])) {
   $_SESSION['name'] = '';
 }
+
+$redir = null;
+
 if (isset($_SESSION['username'])) {
   if (isset($_POST['submit'])) {
     $pdo = Database::connect($_SESSION['berechtigung']);

@@ -1,5 +1,6 @@
 <?php
 class Benutzer_Mietauftrag {
+  public $MAID = 0;
   public $Name = '';
   public $Email = '';
   public $Miete = '';

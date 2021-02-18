@@ -4,7 +4,7 @@ use ski_service;
 -- Alle benutzter mit Mieatauftrag
 drop view if exists Benutzer_Mietauftrag;
 create view Benutzer_Mietauftrag as
-	select  concat(benutzer.Nachname, " ", benutzer.Vorname) as `Name`, benutzer.Email, mietobjekttyp.Bezeichnung as `Miete`,
+	select  mietauftrag.MietauftragID as MAID, concat(benutzer.Nachname, " ", benutzer.Vorname) as `Name`, benutzer.Email, mietobjekttyp.Bezeichnung as `Miete`,
 			mietstatus.Bezeichnung as `Status`, Reservationsdatum, Startdatum, adddate(Startdatum, interval Dauer day) as EndDatum,
             mietobjekt.PreisProTag * mietauftrag.Dauer * mietauftrag.Menge as Preis, mietstatus.AnzeigenInView as anzInView, mietstatus.AnzeigenInWarenkorb as anzInWk, bearbeitbar
     from mietauftrag 
@@ -18,9 +18,9 @@ create view Benutzer_Mietauftrag as
 -- Alle benutzter mit Serviceauftrag
 drop view if exists Benutzer_Serviceauftrag;
 create view Benutzer_Serviceauftrag as
-	select  concat(benutzer.Nachname, " ", benutzer.Vorname) as `Name`, benutzer.Email, Serviceobjekt.Bezeichnung `Service`, 
-    serviceobjekt.Grundpreis + prioritaet.Aufschlag as `Preis`, servicestatus.Bezeichnung as `Status`, prioritaet.Bezeichnung as `Prioritaet`,
-    Startdatum, adddate(Startdatum, interval Dauer day) as EndDatum, servicestatus.AnzeigenInView as anzInView, servicestatus.AnzeigenInWarenkorb as anzInWk, bearbeitbar
+	select  serviceauftrag.ServiceauftragID as SAID, concat(benutzer.Nachname, " ", benutzer.Vorname) as `Name`, benutzer.Email, Serviceobjekt.Bezeichnung `Service`, 
+			serviceobjekt.Grundpreis + prioritaet.Aufschlag as `Preis`, servicestatus.Bezeichnung as `Status`, prioritaet.Bezeichnung as `Prioritaet`,
+			Startdatum, adddate(Startdatum, interval Dauer day) as EndDatum, servicestatus.AnzeigenInView as anzInView, servicestatus.AnzeigenInWarenkorb as anzInWk, bearbeitbar
     from serviceauftrag 
     inner join benutzer on benutzer.BenutzerID = serviceauftrag.BenutzerFK
     inner join serviceobjekt on serviceobjekt.ServiceobjektID = serviceauftrag.ServiceobjektFK
