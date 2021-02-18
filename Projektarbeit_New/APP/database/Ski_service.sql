@@ -123,7 +123,7 @@ create table Mietauftrag
     
 );
 
-
+	
 insert into rang (RangID, Berechtigung, Bezeichnung)
 values	(1, 0, "Benutzer"),
 		(2, 1, "Mitarbeiter"),
@@ -150,6 +150,10 @@ values	(1, "Allround-Ski"),
 		(5, "Regular-Snowboard"),
 		(6, "Goofy-Snowboard");
 
+insert into Mietobjekt(MietobjektID, KoerpergroesseVon, KoerpergroesseBis, ALtersgruppe, Geschlecht, PreisProTag, BildLink, ObjekttypFK)
+values (1, 150, 200, 'Kind','m', 60, 'blablala', 2);
+
+select * from Mietobjekt;
 insert into Prioritaet (PrioID, Bezeichnung, Aufschlag, Dauer)
 values	(1, "Standard", 0.0, 7),
         (2, "Tief", -5.0, 12),
