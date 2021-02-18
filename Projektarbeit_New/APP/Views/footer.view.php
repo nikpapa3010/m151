@@ -19,7 +19,7 @@ function drawFooter() {
         <!--Grid column-->
         <div class="col-md-6">
           <ul class="list-unstyled">
-            <li class="text-light">e-mail@provider.ch</li>
+            <li class="text-light">JetstreamService@gmail.com</li>
             <li class="text-light">062 123 45 67</li>
             <li>
               <a href="./kontakt.php" class="text-light">Zum Kontaktformular</a>

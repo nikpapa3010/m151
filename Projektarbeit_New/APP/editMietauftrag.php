@@ -10,6 +10,7 @@ if (!isset($_SESSION['name'])) {
 $delete = false;
 $redir = null;
 $index = 0;
+$objtypen = [];
 
 if (isset($_SESSION['username'])) {
   $pdo = Database::connect($_SESSION['berechtigung']);
@@ -67,7 +68,7 @@ drawNavbar(isset($_SESSION['username']), $_SESSION['name']);
 if ($delete) {
   drawDeleteMietauftragView($_SESSION['isWarenkorb'], $index);
 } else {
-  drawEditMietauftragView($_SESSION['isWarenkorb']);
+  drawEditMietauftragView(  $objtypen, $_SESSION['isWarenkorb'] );
 }
 drawFooter();
 drawPageFoot();
