@@ -1,5 +1,6 @@
-
-<?php function drawProfileOptionsView(Benutzer $user, array $raenge, bool $canPromote, bool $abgesendet, array $errors) { ?>
+<?php
+function drawProfileOptionsView(Benutzer $user, array $raenge, bool $canPromote, bool $abgesendet, array $errors,
+  $submitValue, bool $showOldPassword = true) { ?>
     <div class="transbox">
       <h1>Profiloptionen</h1>
 
@@ -55,10 +56,12 @@
           </div>
         </div>
         <div class="form-group row">
+          <?php if ($showOldPassword) { ?>
           <div class="col-md-12">
             <label for="pwalt">Altes Passwort</label>
             <input type="password" class="form-control" id="pwalt" name="pwalt" placeholder="Altes Passwort">
           </div>
+          <?php } ?>
           <div class="col-md-6">
             <label for="Passwort">Neues Passwort</label>
             <input type="password" class="form-control" id="Passwort" name="Passwort" placeholder="Neues Passwort">
@@ -70,10 +73,10 @@
         </div>
         <div class="row">
           <div class="col-sm mb-2 mb-sm-0">
-            <button type="submit" class="btn btn-danger" name="delete">Konto löschen</button>
+            <button type="button" class="btn btn-danger" name="delete">Konto löschen</button>
           </div>
           <div class="col-sm text-sm-right">
-            <button type="submit" class="btn btn-primary" name="submit">Änderungen speichern!</button>
+            <button type="submit" class="btn btn-primary" name="submit" value="<?php echo $submitValue; ?>">Änderungen speichern!</button>
           </div>
         </div>
       </form>

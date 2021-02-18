@@ -2,6 +2,7 @@
 // Model
 require_once "./model/Benutzer_Berechtigung.class.php";
 require_once "./model/Benutzer_Mietauftrag.class.php";
+require_once "./model/Benutzer_Rang.class.php";
 require_once "./model/Benutzer_Serviceauftrag.class.php";
 require_once "./model/Benutzer.class.php";
 require_once "./model/Mietauftraege.class.php";
@@ -24,6 +25,7 @@ require_once "./repository/GeneralVariables.inc.php";
 // Views
 require_once "./views/abschliessen.view.php";
 require_once "./views/auftragsliste.view.php";
+require_once "./views/benutzerliste.view.php";
 require_once "./views/footer.view.php";
 require_once "./views/kontakt.view.php";
 require_once "./views/landingpage.view.php";
