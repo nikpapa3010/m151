@@ -6,6 +6,7 @@ class Mietobjekte {
   public $Altersgruppe = '';
   public $Geschlecht = '';
   public $PreisProTag = 0.0;
+  public $BildLink = '';
   public $Objekttyp = '';
   public $ObjekttypID = 0;
 }

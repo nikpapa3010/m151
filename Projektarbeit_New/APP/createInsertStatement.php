@@ -48,8 +48,10 @@ foreach ($altersgruppe as $ag => $groessen) {
   for ($gr = 0; $gr < count($groessen)-1; $gr++) {
     foreach ($objekttypen as $ot => $bilder) {
       foreach ($genders as $gen) {
-        echo '   (' . $groessen[$gr] . ', ' . ($groessen[$gr+1] - 1) . ', ' . $ag . ', ' .
-          $gen . ', ' . $preis[$ag][$ot-1] . ', ' . $ot . ', ' . $bilder[random_int(0, count($bilder)-1)] . "),\n";
+        foreach ($bilder as $bild) {
+          echo '   (' . $groessen[$gr] . ', ' . ($groessen[$gr+1] - 1) . ', ' . $ag . ', ' .
+            $gen . ', ' . $preis[$ag][$ot-1] . ', ' . $ot . ', ' . $bild . "),\n";
+        }
       }
     }
   }

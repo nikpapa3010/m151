@@ -28,7 +28,7 @@ if (isset($_SESSION['username'])) {
     $ende = $_POST['ende'];
     $endedat = date_create($ende);
     $dauerint = date_diff($startdat, $endedat);
-    $dauerzahl = $dauerint->days == false ? $dauerint->d : $dauerint->days;
+    $dauerzahl = ($dauerint->days == false ? $dauerint->d : $dauerint->days) + 1;
 
     if ($groesse < 80 || $groesse > 250) {
       $errors[] = 'Wir haben nur Geräte für Körpergrössen zwischen 80 und 250cm!';
