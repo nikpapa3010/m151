@@ -16,7 +16,6 @@ if (isset($_SESSION['username'])) {
   $pdo->beginTransaction();
 
   if (isset($_POST['submit'])) {
-    echo '<pre>';
     // Post-Variablen setzen
     $vn = trim($_POST['Vorname']);
     $nn = trim($_POST['Nachname']);
@@ -96,9 +95,6 @@ if (isset($_SESSION['username'])) {
           $stmt->execute($parArray);
         }
       }
-      var_dump($stmt->errorInfo());
-      var_dump($pdo->errorInfo());
-      echo '</pre>';
     }
   }
 
