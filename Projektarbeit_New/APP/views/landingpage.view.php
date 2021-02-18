@@ -16,8 +16,13 @@ function drawLandingPageView() {
         <li>Bindung montieren und einstellen</li>
         <li>Fell zuschneiden</li>
         <li>Heisswachsen</li>
+      </ul>
+      <p>
+        Ihre Service ist bei uns standardmässig 7 Tage im Service. Gegen einen Aufpreis sind wir schon in 5 Tagen fertig.
+      </p>
         <br>
         <br>
+      <ul>
       <h2>Unser Mietangebot</h2>
         <li>Allround-Skis</li>
         <li>Slalom-Skis</li>
@@ -26,9 +31,9 @@ function drawLandingPageView() {
         <li>Goofy-Snowboard</li>
         <li>Regular-Snowboard</li>
       </ul>
-      <p>
-        Ihre Skier sind bei uns standardmässig 7 Tage im Service. Gegen einen Aufpreis sind wir schon in 5 Tagen fertig.
-      </p>
+    <p>
+      Wir bieten Körpergrössen nur von 150cm bis 200cm.
+    </p>
     </div>
 <?php
 }
