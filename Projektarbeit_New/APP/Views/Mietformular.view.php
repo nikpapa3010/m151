@@ -69,6 +69,12 @@ function drawMietformularView(bool $abgesendet, array $errors, array $objtypen) 
               <?php if (isset($_POST['ende'])) echo 'value="'.$_POST['ende'].'"'; ?> required />
           </div>
         </div>
+
+        <div class="form-group">
+          <label for="menge" class="col-form-label">Menge</label><br />
+          <input type="number" class="form-control" name="menge" id="menge" min="1" max="10"
+            <?php if (isset($_POST['menge'])) echo 'value="'.$_POST['menge'].'"'; else echo 'value="1"'; ?> required />
+        </div>
         
         <div class="text-right">
           <button type="submit" class="btn btn-primary" name="submit">Reservieren!</button>

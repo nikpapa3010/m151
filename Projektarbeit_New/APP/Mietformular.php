@@ -29,6 +29,7 @@ if (isset($_SESSION['username'])) {
     $endedat = date_create($ende);
     $dauerint = date_diff($startdat, $endedat);
     $dauerzahl = ($dauerint->days == false ? $dauerint->d : $dauerint->days) + 1;
+    $menge = $_POST['menge'];
 
     if ($groesse < 80 || $groesse > 250) {
       $errors[] = 'Wir haben nur Geräte für Körpergrössen zwischen 80 und 250cm!';
@@ -60,6 +61,12 @@ if (isset($_SESSION['username'])) {
     if ($startdat > $endedat) {
       $errors[] = 'Enddatum darf nicht vor Startdatum liegen!';
     }
+    if ($menge < 1) {
+      $errors[] = 'Menge muss mindestens 1 sein!';
+    }
+    if ($menge > 10) {
+      $errors[] = 'Menge darf höchstens 10 sein!';
+    }
 
     if (empty($errors)) {
       $redir = 'mietauswahl.php';
@@ -69,6 +76,7 @@ if (isset($_SESSION['username'])) {
       $_SESSION['start'] = $start;
       $_SESSION['dauer'] = $dauerzahl;
       $_SESSION['objtyp'] = $objtyp;
+      $_SESSION['menge'] = $menge;
     }
   }
 }

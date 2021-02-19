@@ -11,7 +11,8 @@ $redir = null;
 $mietobjekte = [];
 
 if (isset($_SESSION['groesse']) && isset($_SESSION['gesch']) && isset($_SESSION['alter']) &&
-    isset($_SESSION['start']) && isset($_SESSION['dauer']) && isset($_SESSION['objtyp'])) {
+    isset($_SESSION['start']) && isset($_SESSION['dauer']) && isset($_SESSION['objtyp']) &&
+    isset($_SESSION['menge'])) {
   if (isset($_SESSION['username'])) {
     $groesse = $_SESSION['groesse'];
     $gesch = $_SESSION['gesch'];

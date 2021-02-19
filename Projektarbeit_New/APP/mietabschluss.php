@@ -12,20 +12,17 @@ $redir = null;
 if (isset($_SESSION['username']) && isset($_POST['submit'])) {
   $pdo = Database::connect($_SESSION['berechtigung']);
   $pdo->beginTransaction();
-  
-  $stmt = $pdo->prepare('select BenutzerID from benutzer where Email = :em');
-  $stmt->execute([':em' => $_SESSION['username']]);
-  $userid = $stmt->fetchColumn(0);
 
   $resdat = date_format(date_create(), 'Y-m-d');
   $start = $_SESSION['start'];
   $dauer = $_SESSION['dauer'];
-  $menge = 1;
+  $menge = $_SESSION['menge'];
   $objid = $_POST['submit'];
   $status = 1;
 
-  $stmt = $pdo->prepare('call PMietauftrag(:rd, :sd, :dr, :mg, :uid, :mo, :st)');
-  $stmt->execute([':rd' => $resdat, ':sd' => $start, ':dr' => $dauer, ':mg' => $menge, ':uid' => $userid, ':mo' => $objid, ':st' => $status]);
+  $stmt = $pdo->prepare('call PMietauftrag(:rd, :sd, :dr, :mg, :em, :mo, :st)');
+  $stmt->execute([':rd' => $resdat, ':sd' => $start, ':dr' => $dauer, ':mg' => $menge,
+    ':em' => $_SESSION['username'], ':mo' => $objid, ':st' => $status]);
   $pdo->commit();
   $redir = 'warenkorb.php';
 } else {

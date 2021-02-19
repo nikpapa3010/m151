@@ -4,6 +4,7 @@ class Mietauftrag {
   public $Reservationsdatum = '';
   public $Startdatum = '';
   public $Dauer = 0;
+  public $Menge = 0;
   public $BenutzerFK = 0;
   public $MietobjektFK = 0;
   public $StatusFK = 0;

@@ -29,7 +29,7 @@ function drawPageHead(string $title, string $redirect = null, int $redirsec = 0)
   <style>
     body 
     {
-      background-image: url('https://wallpaperaccess.com/full/950359.jpg');
+      background-image: url('https://www.wallpaperup.com/uploads/wallpapers/2014/12/01/536244/2aa65d6331ade92cdb50e9e84a5de2cd.jpg');
       background-repeat: no-repeat;
       background-attachment: fixed;  
       background-size: auto;

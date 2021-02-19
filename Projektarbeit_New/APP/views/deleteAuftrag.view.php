@@ -1,14 +1,14 @@
 <?php
-function drawDeleteMietauftragView(bool $warenkorb, int $index) {
+function drawDeleteAuftragView(bool $warenkorb, int $index) {
   ?>
     <div class="transbox">
 
-      <h1>Mietauftrag löschen</h1>
+      <h1>Auftrag löschen</h1>
 
       <form action='<?php echo $_SERVER["PHP_SELF"]; ?>' method="POST">
         <div class="form-group row">
           <div class="col-md">
-            <label>Wollen Sie diesen Mietauftrag wirklich löschen?</label>
+            <label>Wollen Sie diesen Auftrag wirklich löschen?</label>
           </div>
         </div>
         <div class="form-group row">

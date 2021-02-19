@@ -18,10 +18,8 @@ function drawLandingPageView() {
         <li>Heisswachsen</li>
       </ul>
       <p>
-        Ihre Service ist bei uns standardmässig 7 Tage im Service. Gegen einen Aufpreis sind wir schon in 5 Tagen fertig.
+        Ihre Skier sind bei uns standardmässig 7 Tage im Service. Gegen einen Aufpreis sind wir schon in 5 Tagen fertig.
       </p>
-        <br>
-        <br>
       <ul>
       <h2>Unser Mietangebot</h2>
         <li>Allround-Skis</li>
@@ -31,9 +29,9 @@ function drawLandingPageView() {
         <li>Goofy-Snowboard</li>
         <li>Regular-Snowboard</li>
       </ul>
-    <p>
-      Wir bieten Körpergrössen nur von 150cm bis 200cm.
-    </p>
+      <p>
+        Wir bieten Schneesportgeräte für Körpergrössen von 80 bis 250cm.
+      </p>
     </div>
 <?php
 }

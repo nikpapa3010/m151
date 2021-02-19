@@ -69,8 +69,8 @@ function drawAuftragslisteView(bool $showUser, array $mietauftraege, array $serv
                 <td class="d-none d-lg-table-cell"><?php echo $serviceauftrag->Status ?></td>
                 <td class="d-table-cell">
                   <?php if ($serviceauftrag->bearbeitbar) { ?>
-                  <button type="submit" name="delete" class="btn btn-primary" value="<?php echo $serviceauftrag->SAID; ?>">&#x270F;</button>
-                  <button type="submit" name="edit" class="btn btn-danger" value="<?php echo $serviceauftrag->SAID; ?>">&#x232B;</button>
+                  <button type="submit" name="edit" class="btn btn-primary" value="<?php echo $serviceauftrag->SAID; ?>">&#x270F;</button>
+                  <button type="submit" name="delete" class="btn btn-danger" value="<?php echo $serviceauftrag->SAID; ?>">&#x232B;</button>
                   <?php } ?>
                 </td>
               </tr>
